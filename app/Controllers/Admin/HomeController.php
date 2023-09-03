@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Admin;
 
 class HomeController
 {
     public function index()
     {
-        return view("admin.admin.create");
+        return view("admin.home");
     }
 }

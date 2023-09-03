@@ -7,6 +7,14 @@ use mysqli;
 
 class Db
 {
+    public $db;
+
+    public $query;
+
+    public $result;
+
+    public $insertId;
+
     public function connect()
     {
         $host = config("database.host");
@@ -15,12 +23,29 @@ class Db
         $password = config("database.password");
         $database = config("database.database");
 
-        $db = new mysqli($host, $username, $password, $database, $port);
+        $this->db = new mysqli($host, $username, $password, $database, $port);
 
-        if ($db->connect_error) {
-            throw new Exception($db->connect_error);
+        if ($this->db->connect_error) {
+            throw new Exception($this->db->connect_error);
         }
 
-        return $db;
+        return $this;
+    }
+
+    public function query($query)
+    {
+        $this->result = $this->db->query($query);
+
+        $this->insertId = $this->db->insert_id;
+
+        return $this;
+    }
+
+    public function first(){
+        return mysqli_fetch_assoc($this->result);
+    }
+
+    public function get(){
+        return mysqli_fetch_all($this->result, MYSQLI_ASSOC);
     }
 }

@@ -3,6 +3,8 @@
 require_once "autoload.php";
 require_once "helpers.php";
 
+session_start();
+
 $routes = reigsterRoutes();
 
 $uri = $_SERVER['REQUEST_URI'];

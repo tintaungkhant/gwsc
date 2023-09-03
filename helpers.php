@@ -1,5 +1,9 @@
 <?php
 
+use App\Utils\Db;
+use App\Utils\Request;
+use App\Utils\Session;
+
 function config($key, $default = null)
 {
     $configPath = 'configs/';
@@ -23,27 +27,43 @@ function config($key, $default = null)
     return $config;
 }
 
+function dataGet($array, $path, $default = null)
+{
+    $keys = explode('.', $path);
+
+    foreach ($keys as $key) {
+        if (isset($array[$key])) {
+            $array = $array[$key];
+        } else {
+            return $default;
+        }
+    }
+
+    return $array;
+}
+
+function dataSet(&$array, $path, $value) {
+    $keys = explode('.', $path);
+    $temp = &$array;
+
+    foreach ($keys as $key) {
+        if (!isset($temp[$key]) || !is_array($temp[$key])) {
+            $temp[$key] = [];
+        }
+        $temp =& $temp[$key];
+    }
+
+    $temp = $value;
+}
+
+function session(){
+    return (new Session);
+}
+
 function view($key)
 {
     $filePath = str_replace(".", "/", $key);
     return require_once "views/" . $filePath . ".php";
-}
-
-function db()
-{
-    $host = config("database.host");
-    $port = config("database.port");
-    $username = config("database.username");
-    $password = config("database.password");
-    $database = config("database.database");
-
-    $db = new mysqli($host, $username, $password, $database, $port);
-
-    if ($db->connect_error) {
-        throw new Exception($db->connect_error);
-    }
-
-    return $db;
 }
 
 function redirect($route)
@@ -52,13 +72,19 @@ function redirect($route)
     die;
 }
 
-function publicPath($path){
-    return "public/".$path;
+function publicPath($path)
+{
+    return "public/" . $path;
 }
 
-function doSomething()
+function request()
 {
-    return "HIIII";
+    return (new Request);
+}
+
+function db()
+{
+    return (new Db)->connect();
 }
 
 function adminAuth()
