@@ -15,6 +15,9 @@ return [
             "/sites" => [SiteController::class, "index"],
             "/sites/create" => [SiteController::class, "create"],
             "/sites/store" => [SiteController::class, "store"],
+            "/sites/{site_id}/edit" => [SiteController::class, "edit"],
+            "/sites/{site_id}/update" => [SiteController::class, "update"],
+            "/sites/{site_id}/delete" => [SiteController::class, "delete"],
         ]
     ]
 ];
