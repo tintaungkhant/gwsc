@@ -164,3 +164,7 @@ function showErrorBlock()
 
     return $mesage;
 }
+
+function dieDump($value){
+    die(var_dump($value));
+}

@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
-class Model {
+class Model
+{
+    use ModelTrait;
+
     public function __construct()
     {
-        
     }
 
-    public function generateInsertData($data){
+    public function generateInsertData($data)
+    {
         $i = 0;
 
         $columns = "";
@@ -34,7 +37,8 @@ class Model {
         ];
     }
 
-    public function generateUpdateData($data){
+    public function generateUpdateData($data)
+    {
         $i = 0;
 
         $columns = "";
