@@ -36,8 +36,15 @@ function db()
 // );";
 // db()->query($query);
 
-$query = "CREATE TABLE `features` (
-  `FeatureID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `FeatureName` varchar(50) DEFAULT NULL
+// $query = "CREATE TABLE `features` (
+//   `FeatureID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+//   `FeatureName` varchar(50) DEFAULT NULL
+// );";
+// db()->query($query);
+
+$query = "CREATE TABLE `site_feature` (
+  `SiteFeatureID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `SiteID` INT,
+  `FeatureID` INT
 );";
 db()->query($query);

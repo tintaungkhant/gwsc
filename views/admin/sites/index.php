@@ -34,7 +34,7 @@ view("admin.layout.header");
                             <tr>
                                 <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"><?php echo $site["SiteID"] ?></td>
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><?php echo $site["SiteName"] ?></td>
-                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><?php echo substr($site["SiteDescription"], 0, 100) ?><?php echo strlen($site["SiteDescription"] > 100) ? "..." : "" ?></td>
+                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><?php echo truncateLongText($site["SiteDescription"]) ?></td>
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><?php echo $site["SiteLocation"] ?></td>
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><?php echo $site["SiteImage"] ?></td>
                                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">

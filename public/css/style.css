@@ -1043,6 +1043,10 @@ select {
   height: 2rem;
 }
 
+.h-4 {
+  height: 1rem;
+}
+
 .w-5 {
   width: 1.25rem;
 }
@@ -1057,6 +1061,10 @@ select {
 
 .w-full {
   width: 100%;
+}
+
+.w-4 {
+  width: 1rem;
 }
 
 .min-w-full {

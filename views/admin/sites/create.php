@@ -8,7 +8,7 @@ view("admin.layout.header");
             <h1 class="text-base font-semibold leading-6 text-gray-900">Create Site</h1>
         </div>
     </div>
-    <?php echo showErrorBlock()?>
+    <?php echo showErrorBlock() ?>
     <div class="mt-8 flow-root">
         <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
@@ -36,6 +36,21 @@ view("admin.layout.header");
                             <label for="SiteImage" class="block text-sm font-medium leading-6 text-gray-900">Image</label>
                             <div class="mt-2">
                                 <input type="text" name="SiteImage" id="SiteImage" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Features" class="block text-sm font-medium leading-6 text-gray-900">Features</label>
+                            <div class="mt-2">
+                                <?php foreach ($features as $index => $feature) : ?>
+                                    <div class="relative flex items-start">
+                                        <div class="flex h-6 items-center">
+                                            <input id="feature_<?php echo $index ?>" value="<?php echo $feature["FeatureID"] ?>" name="featureIDs[<?php echo $index ?>]" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                                        </div>
+                                        <div class="ml-3 text-sm leading-6">
+                                            <label for="feature_<?php echo $index ?>" class="font-medium text-gray-900"><?php echo $feature["FeatureName"] ?></label>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                         <div class="mb-3">

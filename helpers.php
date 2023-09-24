@@ -165,6 +165,15 @@ function showErrorBlock()
     return $mesage;
 }
 
-function dieDump($value){
+function truncateLongText($string, $maxLength = 100) {
+    if (strlen($string) > $maxLength) {
+        $string = substr($string, 0, $maxLength);
+        $string .= "...";
+    }
+
+    return $string;
+}
+
+function dd($value){
     die(var_dump($value));
 }
