@@ -2,8 +2,8 @@
 
 namespace App\Controllers\Admin;
 
-use App\Models\Admin;
 use App\Models\Feature;
+use App\Models\LocalAttraction;
 use App\Models\Site;
 
 class SiteController
@@ -21,7 +21,10 @@ class SiteController
         $feature = new Feature;
         $features = $feature->getAll();
 
-        return view("admin.sites.create", ["features" => $features]);
+        $local_attraction = new LocalAttraction;
+        $local_attractions = $local_attraction->getAll();
+
+        return view("admin.sites.create", ["features" => $features, "local_attractions" => $local_attractions]);
     }
 
     public function store()
@@ -33,7 +36,8 @@ class SiteController
             "SiteDescription" => ["required"],
             "SiteLocation" => ["required"],
             "SiteImage" => ["required"],
-            "featureIDs" => ["required"]
+            "FeatureIDs" => ["required"],
+            "LocalAttractionIDs" => ["required"],
         ]);
 
         if (!$validator->validate()) {
@@ -42,14 +46,19 @@ class SiteController
             return redirect("/admin/sites/create");
         }
 
-        $feature_ids = $data["featureIDs"];
+        $feature_ids = $data["FeatureIDs"];
 
-        unset($data["featureIDs"]);
+        unset($data["FeatureIDs"]);
+
+        $local_attraction_ids = $data["LocalAttractionIDs"];
+
+        unset($data["LocalAttractionIDs"]);
 
         $site = new Site;
         $site = $site->create($data);
 
         (new Site)->syncFeatures($site["SiteID"], $feature_ids);
+        (new Site)->syncLocalAttractions($site["SiteID"], $local_attraction_ids);
 
         // TODO: flush message
 
@@ -60,7 +69,7 @@ class SiteController
     {
 
         $site = new Site;
-        $site = $site->firstByIDWithFeatures($routePrams["site_id"]);
+        $site = $site->firstByIDWithRelations($routePrams["site_id"]);
 
         // TODO: fail if not found
 
@@ -78,7 +87,22 @@ class SiteController
             }
         }
 
-        return view("admin.sites.edit", ["site" => $site, "features" => $features]);
+        $local_attraction = new LocalAttraction;
+        $local_attractions = $local_attraction->getAll();
+
+        foreach($local_attractions as $index => $local_attraction){
+            $local_attraction["selected"] = false;
+            foreach($site["local_attractions"] as $site_local_attraction){
+                if($local_attraction["selected"]){
+                    break;
+                }
+                $local_attraction["selected"] = $site_local_attraction["LocalAttractionID"] == $local_attraction["LocalAttractionID"];
+                $local_attractions[$index] = $local_attraction;
+            }
+        }
+
+
+        return view("admin.sites.edit", ["site" => $site, "features" => $features, "local_attractions" => $local_attractions]);
     }
 
     public function update($routePrams)
@@ -90,7 +114,8 @@ class SiteController
             "SiteDescription" => ["required"],
             "SiteLocation" => ["required"],
             "SiteImage" => ["required"],
-            "featureIDs" => ["required"]
+            "FeatureIDs" => ["required"],
+            "LocalAttractionIDs" => ["required"],
         ]);
 
         if (!$validator->validate()) {
@@ -99,14 +124,19 @@ class SiteController
             return redirect("/admin/sites/" . $routePrams["site_id"] . "/edit");
         }
 
-        $feature_ids = $data["featureIDs"];
+        $feature_ids = $data["FeatureIDs"];
 
-        unset($data["featureIDs"]);
+        unset($data["FeatureIDs"]);
+
+        $local_attraction_ids = $data["LocalAttractionIDs"];
+
+        unset($data["LocalAttractionIDs"]);
 
         $site = new Site;
         $site = $site->update($routePrams["site_id"], $data);
 
         (new Site)->syncFeatures($site["SiteID"], $feature_ids);
+        (new Site)->syncLocalAttractions($site["SiteID"], $local_attraction_ids);
 
         // TODO: flush message
 

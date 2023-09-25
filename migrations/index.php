@@ -49,9 +49,16 @@ function db()
 // );";
 // db()->query($query);
 
-$query = "CREATE TABLE `local_attractions` (
-  `LocalAttractionID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `LocalAttractionName` varchar(50) DEFAULT NULL,
-  `LocalAttractionImage` TEXT DEFAULT NULL
+// $query = "CREATE TABLE `local_attractions` (
+//   `LocalAttractionID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+//   `LocalAttractionName` varchar(50) DEFAULT NULL,
+//   `LocalAttractionImage` TEXT DEFAULT NULL
+// );";
+// db()->query($query);
+
+$query = "CREATE TABLE `site_local_attraction` (
+  `SiteLocalAttractionID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `SiteID` INT,
+  `LocalAttractionID` INT
 );";
 db()->query($query);

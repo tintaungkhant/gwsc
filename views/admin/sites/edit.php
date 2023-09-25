@@ -45,10 +45,25 @@ view("admin.layout.header");
                                 <?php foreach ($features as $index => $feature) : ?>
                                     <div class="relative flex items-start">
                                         <div class="flex h-6 items-center">
-                                            <input id="feature_<?php echo $index ?>" value="<?php echo $feature["FeatureID"] ?>"<?php echo $feature["selected"] ? 'checked' : '' ?> name="featureIDs[<?php echo $index ?>]" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                                            <input id="feature_<?php echo $index ?>" value="<?php echo $feature["FeatureID"] ?>"<?php echo $feature["selected"] ? 'checked' : '' ?> name="FeatureIDs[<?php echo $index ?>]" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600">
                                         </div>
                                         <div class="ml-3 text-sm leading-6">
                                             <label for="feature_<?php echo $index ?>" class="font-medium text-gray-900"><?php echo $feature["FeatureName"] ?></label>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Features" class="block text-sm font-medium leading-6 text-gray-900">Local Attractions</label>
+                            <div class="mt-2">
+                                <?php foreach ($local_attractions as $index => $local_attraction) : ?>
+                                    <div class="relative flex items-start">
+                                        <div class="flex h-6 items-center">
+                                            <input id="local_attraction_<?php echo $index ?>" value="<?php echo $local_attraction["LocalAttractionID"] ?>"<?php echo $local_attraction["selected"] ? 'checked' : '' ?> name="LocalAttractionIDs[<?php echo $index ?>]" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                                        </div>
+                                        <div class="ml-3 text-sm leading-6">
+                                            <label for="local_attraction_<?php echo $index ?>" class="font-medium text-gray-900"><?php echo $local_attraction["LocalAttractionName"] ?></label>
                                         </div>
                                     </div>
                                 <?php endforeach; ?>

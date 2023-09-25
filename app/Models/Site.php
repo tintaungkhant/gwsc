@@ -8,7 +8,7 @@ class Site extends Model
 
     protected $primaryKey = "SiteID";
 
-    public function getAllWithFeatures()
+    public function getAllWithRelations()
     {
         $query  = "SELECT sites.*, GROUP_CONCAT(features.FeatureID) AS FeatureIDs
         FROM sites
@@ -31,12 +31,14 @@ class Site extends Model
         return $sites;
     }
 
-    public function firstByIDWithFeatures($id)
+    public function firstByIDWithRelations($id)
     {
-        $query = "SELECT sites.*, GROUP_CONCAT(features.FeatureID) AS FeatureIDs
+        $query = "SELECT sites.*, GROUP_CONCAT(features.FeatureID) AS FeatureIDs, GROUP_CONCAT(local_attractions.LocalAttractionID) AS LocalAttractionIDs
         FROM sites
         LEFT JOIN site_feature ON sites.SiteID = site_feature.SiteID
         LEFT JOIN features ON site_feature.FeatureID = features.FeatureID
+        LEFT JOIN site_local_attraction ON sites.SiteID = site_local_attraction.SiteID
+        LEFT JOIN local_attractions ON site_local_attraction.LocalAttractionID = local_attractions.LocalAttractionID
         WHERE sites.SiteID = '$id'
         GROUP BY sites.SiteID";
 
@@ -46,6 +48,12 @@ class Site extends Model
 
         foreach ($feature_ids as $feature_id) {
             $site["features"][] = (new Feature)->firstByID($feature_id);
+        }
+
+        $local_attraction_ids =  $site["LocalAttractionIDs"] ? explode(",", $site["LocalAttractionIDs"]) : [];
+
+        foreach ($local_attraction_ids as $local_attraction_id) {
+            $site["local_attractions"][] = (new LocalAttraction)->firstByID($local_attraction_id);
         }
 
         return $site;
@@ -59,6 +67,19 @@ class Site extends Model
 
         foreach ($feature_ids as $feature_id) {
             $query = "INSERT INTO site_feature (SiteID, FeatureID) VALUES ('$site_id', '$feature_id')";
+
+            db()->query($query);
+        }
+    }
+
+    public function syncLocalAttractions($site_id, $local_attractions)
+    {
+        $query = "DELETE FROM site_local_attraction WHERE SiteID = '$site_id'";
+
+        db()->query($query);
+
+        foreach ($local_attractions as $local_attraction) {
+            $query = "INSERT INTO site_local_attraction (SiteID, LocalAttractionID) VALUES ('$site_id', '$local_attraction')";
 
             db()->query($query);
         }
