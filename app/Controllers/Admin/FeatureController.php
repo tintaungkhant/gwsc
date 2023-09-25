@@ -8,8 +8,8 @@ class FeatureController
 {
     public function index()
     {
-        $admin = new Feature;
-        $features = $admin->getAll();
+        $feature = new Feature;
+        $features = $feature->getAll();
 
         return view("admin.features.index", ["features" => $features]);
     }

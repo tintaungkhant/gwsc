@@ -3,6 +3,7 @@
 use App\Controllers\Admin\AdminController;
 use App\Controllers\Admin\FeatureController;
 use App\Controllers\Admin\HomeController;
+use App\Controllers\Admin\LocalAttractionController;
 use App\Controllers\Admin\LoginController;
 use App\Controllers\Admin\PitchTypeController;
 use App\Controllers\Admin\SiteController;
@@ -44,6 +45,13 @@ return [
             "/features/{feature_id}/edit" => [FeatureController::class, "edit"],
             "/features/{feature_id}/update" => [FeatureController::class, "update"],
             "/features/{feature_id}/delete" => [FeatureController::class, "delete"],
+
+            "/local-attractions" => [LocalAttractionController::class, "index"],
+            "/local-attractions/create" => [LocalAttractionController::class, "create"],
+            "/local-attractions/store" => [LocalAttractionController::class, "store"],
+            "/local-attractions/{local_attraction_id}/edit" => [LocalAttractionController::class, "edit"],
+            "/local-attractions/{local_attraction_id}/update" => [LocalAttractionController::class, "update"],
+            "/local-attractions/{local_attraction_id}/delete" => [LocalAttractionController::class, "delete"],
         ]
     ]
 ];
