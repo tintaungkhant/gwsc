@@ -1,6 +1,7 @@
 <?php
 
 use App\Controllers\Admin\AdminController;
+use App\Controllers\Admin\AvailableSiteController;
 use App\Controllers\Admin\FeatureController;
 use App\Controllers\Admin\HomeController;
 use App\Controllers\Admin\LocalAttractionController;
@@ -52,6 +53,13 @@ return [
             "/local-attractions/{local_attraction_id}/edit" => [LocalAttractionController::class, "edit"],
             "/local-attractions/{local_attraction_id}/update" => [LocalAttractionController::class, "update"],
             "/local-attractions/{local_attraction_id}/delete" => [LocalAttractionController::class, "delete"],
+
+            "/available-sites" => [AvailableSiteController::class, "index"],
+            "/available-sites/create" => [AvailableSiteController::class, "create"],
+            "/available-sites/store" => [AvailableSiteController::class, "store"],
+            "/available-sites/{available_site_id}/edit" => [AvailableSiteController::class, "edit"],
+            "/available-sites/{available_site_id}/update" => [AvailableSiteController::class, "update"],
+            "/available-sites/{available_site_id}/delete" => [AvailableSiteController::class, "delete"],
         ]
     ]
 ];

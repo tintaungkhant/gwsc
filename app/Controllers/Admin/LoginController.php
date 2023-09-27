@@ -13,20 +13,35 @@ class LoginController
 
     public function login(){
         // TODO: validation
+        $data = request()->all();
 
-        var_dump(request()->all());
+        $validator = validator($data, [
+            "AdminUserName" => ["required"],
+            "AdminPassword" => ["required"],
+        ]);
 
-        $username = request()->get("AdminUserName");
-        $password = request()->get("AdminPassword");
+        if (!$validator->validate()) {
+            setErrorMessages($validator->getErrors());
+
+            return redirect("/admin/login");
+        }
+
+        $username = $data["AdminUserName"];
+        $password = $data["AdminPassword"];
 
         $admin = new Admin;
         $admin = $admin->firstByUsernameAndPassword($username, hash("md5", $password));
 
         if($admin){
             session()->set("admin", $admin);
+            
             return redirect("/admin");
         }else{
-            // TODO: flush message
+            setErrorMessages([
+                "common" => ["Your account credential is wrong!"]
+            ]);
+
+            return redirect("/admin/login");
         }
     }
 }

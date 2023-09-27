@@ -18,12 +18,13 @@
             </button>
         </div>
         <div class="hidden lg:flex lg:gap-x-12">
-            <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Product</a>
-            <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Features</a>
-            <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Marketplace</a>
-            <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Company</a>
-
-            <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
+            <a href="/admin/admins" class="text-sm font-semibold leading-6 text-gray-900">Admins</a>
+            <a href="/admin/sites" class="text-sm font-semibold leading-6 text-gray-900">Sites</a>
+            <a href="/admin/available-sites" class="text-sm font-semibold leading-6 text-gray-900">Available Sites</a>
+            <a href="/admin/pitch-types" class="text-sm font-semibold leading-6 text-gray-900">Pitch Type</a>
+            <a href="/admin/features" class="text-sm font-semibold leading-6 text-gray-900">Features</a>
+            <a href="/admin/local-attractions" class="text-sm font-semibold leading-6 text-gray-900">Local Attractions</a>
+            <a href="/admin/login" class="text-sm font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
         </div>
     </nav>
     <!-- Mobile menu, show/hide based on menu open state. -->

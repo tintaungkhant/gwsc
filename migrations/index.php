@@ -56,9 +56,17 @@ function db()
 // );";
 // db()->query($query);
 
-$query = "CREATE TABLE `site_local_attraction` (
-  `SiteLocalAttractionID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+// $query = "CREATE TABLE `site_local_attraction` (
+//   `SiteLocalAttractionID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+//   `SiteID` INT,
+//   `LocalAttractionID` INT
+// );";
+// db()->query($query);
+
+$query = "CREATE TABLE `available_sites` (
+  `AvailableSiteID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `SiteID` INT,
-  `LocalAttractionID` INT
+  `PitchTypeID` INT,
+  `IsAvailabe` INT DEFAULT 1
 );";
 db()->query($query);
