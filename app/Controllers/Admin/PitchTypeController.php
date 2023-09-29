@@ -8,8 +8,8 @@ class PitchTypeController
 {
     public function index()
     {
-        $admin = new PitchType;
-        $pitch_types = $admin->getAll();
+        $pitch_type = new PitchType;
+        $pitch_types = $pitch_type->getAll();
 
         return view("admin.pitch-types.index", ["pitch_types" => $pitch_types]);
     }

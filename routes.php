@@ -8,6 +8,8 @@ use App\Controllers\Admin\LocalAttractionController;
 use App\Controllers\Admin\LoginController;
 use App\Controllers\Admin\PitchTypeController;
 use App\Controllers\Admin\SiteController;
+use App\Controllers\User\HomeController as UserHomeController;
+use App\Controllers\User\SiteController as UserSiteController;
 
 return [
     [
@@ -61,5 +63,15 @@ return [
             "/available-sites/{available_site_id}/update" => [AvailableSiteController::class, "update"],
             "/available-sites/{available_site_id}/delete" => [AvailableSiteController::class, "delete"],
         ]
-    ]
+        ],
+        [
+            "middleware" => "",
+            "prefix" => "",
+            "routes" => [
+                "/" => [UserHomeController::class, "index"],
+
+                "/sites" => [UserSiteController::class, "index"],
+                "/sites/{site_id}" => [UserSiteController::class, "show"],
+            ]
+        ]
 ];

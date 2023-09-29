@@ -15,7 +15,9 @@ class AvailableSite extends Model
         $old_data = db()->query($query)->first();
 
         if ($old_data) {
-            $query = "UPDATE available_sites SET IsAvailabe = 1 WHERE AvailableSiteID = " . $old_data["AvailableSiteID"];
+            $columns = $this->generateUpdateData($data)["columns"];
+            
+            $query = "UPDATE $this->table SET $columns WHERE $this->primaryKey = '".$old_data["AvailableSiteID"]."'";
 
             db()->query($query);
 
@@ -33,7 +35,8 @@ class AvailableSite extends Model
         sites.SiteName,
         pitch_types.PitchTypeID,
         pitch_types.PitchTypeName,
-        available_sites.IsAvailabe
+        available_sites.Slot,
+        available_sites.Fee
     FROM
         sites
     INNER JOIN
@@ -56,7 +59,8 @@ class AvailableSite extends Model
         sites.SiteName,
         pitch_types.PitchTypeID,
         pitch_types.PitchTypeName,
-        available_sites.IsAvailabe
+        available_sites.Slot,
+        available_sites.Fee
     FROM
         sites
     INNER JOIN

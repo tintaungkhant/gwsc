@@ -177,3 +177,17 @@ function truncateLongText($string, $maxLength = 100) {
 function dd($value){
     die(var_dump($value));
 }
+
+function uploadFilePath($ext=""){
+    $path = "/public/uploads/";
+    if(!$ext){
+        return $path;
+    }
+
+    $file_name = rand(100,9999).strrev(time()).rand(100,9999).".".$ext;
+    return $path.$file_name;
+}
+
+function getFileExt($path){
+    return strtolower(pathinfo($path)["extension"]);
+}

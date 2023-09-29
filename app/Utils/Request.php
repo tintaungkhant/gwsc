@@ -7,8 +7,9 @@ class Request
     public function all(){
         $get = $_GET ? $_GET : [];
         $post = $_POST ? $_POST : [];
+        $file = $_FILES ? $_FILES : [];
 
-        return array_merge($get, $post);
+        return array_merge($get, $post, $file);
     }
 
     public function get($key, $default = null)

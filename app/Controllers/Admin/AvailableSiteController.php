@@ -33,7 +33,9 @@ class AvailableSiteController
 
         $validator = validator($data, [
             "SiteID" => ["required"],
-            "PitchTypeID" => ["required"]
+            "PitchTypeID" => ["required"],
+            "Slot" => ["required"],
+            "Fee" => ["required"],
         ]);
 
         if (!$validator->validate()) {
@@ -83,10 +85,19 @@ class AvailableSiteController
     {
         $data = request()->all();
 
+        $validator = validator($data, [
+            "Slot" => ["required"],
+            "Fee" => ["required"],
+        ]);
+
+        if (!$validator->validate()) {
+            setErrorMessages($validator->getErrors());
+
+            return redirect("/admin/available-sites/".$routePrams["available_site_id"]."/edit");
+        }
+
         $available_site = new AvailableSite;
         $available_site = $available_site->update($routePrams["available_site_id"], $data);
-
-        // TODO: flush message
 
         return redirect("/admin/available-sites");
     }

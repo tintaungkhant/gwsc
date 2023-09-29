@@ -8,12 +8,12 @@ view("admin.layout.header");
             <h1 class="text-base font-semibold leading-6 text-gray-900">Edit Site</h1>
         </div>
     </div>
-    <?php echo showErrorBlock()?>
+    <?php echo showErrorBlock() ?>
     <div class="mt-8 flow-root">
         <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                 <div class="overflow-hidden p-4 shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
-                    <form action="/admin/sites/<?php echo $site["SiteID"] ?>/update" method="POST">
+                    <form action="/admin/sites/<?php echo $site["SiteID"] ?>/update" method="POST" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="SiteName" class="block text-sm font-medium leading-6 text-gray-900">Name</label>
                             <div class="mt-2">
@@ -35,8 +35,8 @@ view("admin.layout.header");
                         <div class="mb-3">
                             <label for="SiteImage" class="block text-sm font-medium leading-6 text-gray-900">Image</label>
                             <div class="mt-2">
-                                <!-- TODO: image -->
-                                <input type="text" name="SiteImage" id="SiteImage" value="<?php echo $site["SiteImage"] ?>" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                <input type="hidden" name="OldSiteImage" value="<?php echo $site["SiteImage"] ?>">
+                                <input type="file" name="SiteImage" id="SiteImage" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
                         <div class="mb-3">
@@ -45,7 +45,7 @@ view("admin.layout.header");
                                 <?php foreach ($features as $index => $feature) : ?>
                                     <div class="relative flex items-start">
                                         <div class="flex h-6 items-center">
-                                            <input id="feature_<?php echo $index ?>" value="<?php echo $feature["FeatureID"] ?>"<?php echo $feature["selected"] ? 'checked' : '' ?> name="FeatureIDs[<?php echo $index ?>]" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                                            <input id="feature_<?php echo $index ?>" value="<?php echo $feature["FeatureID"] ?>" <?php echo $feature["selected"] ? 'checked' : '' ?> name="FeatureIDs[<?php echo $index ?>]" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600">
                                         </div>
                                         <div class="ml-3 text-sm leading-6">
                                             <label for="feature_<?php echo $index ?>" class="font-medium text-gray-900"><?php echo $feature["FeatureName"] ?></label>
@@ -60,7 +60,7 @@ view("admin.layout.header");
                                 <?php foreach ($local_attractions as $index => $local_attraction) : ?>
                                     <div class="relative flex items-start">
                                         <div class="flex h-6 items-center">
-                                            <input id="local_attraction_<?php echo $index ?>" value="<?php echo $local_attraction["LocalAttractionID"] ?>"<?php echo $local_attraction["selected"] ? 'checked' : '' ?> name="LocalAttractionIDs[<?php echo $index ?>]" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                                            <input id="local_attraction_<?php echo $index ?>" value="<?php echo $local_attraction["LocalAttractionID"] ?>" <?php echo $local_attraction["selected"] ? 'checked' : '' ?> name="LocalAttractionIDs[<?php echo $index ?>]" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600">
                                         </div>
                                         <div class="ml-3 text-sm leading-6">
                                             <label for="local_attraction_<?php echo $index ?>" class="font-medium text-gray-900"><?php echo $local_attraction["LocalAttractionName"] ?></label>

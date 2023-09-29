@@ -25,7 +25,7 @@ function db()
 //     `SiteID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 //     `SiteName` varchar(50),
 //     `SiteDescription` TEXT,
-//     `SiteLocation` varchar(255) DEFAULT NULL,
+//     `SiteLocation` TEXT DEFAULT NULL,
 //     `SiteImage` TEXT DEFAULT NULL
 //   );";
 // db()->query($query);
@@ -53,6 +53,7 @@ function db()
 //   `LocalAttractionID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 //   `LocalAttractionName` varchar(50) DEFAULT NULL,
 //   `LocalAttractionImage` TEXT DEFAULT NULL
+//   `LocalAttractionDescription` TEXT DEFAULT NULL
 // );";
 // db()->query($query);
 
@@ -67,6 +68,7 @@ $query = "CREATE TABLE `available_sites` (
   `AvailableSiteID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `SiteID` INT,
   `PitchTypeID` INT,
-  `IsAvailabe` INT DEFAULT 1
+  `Slot` INT DEFAULT 1,
+  `Fee` INT,
 );";
 db()->query($query);

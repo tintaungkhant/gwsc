@@ -31,11 +31,13 @@ class SiteController
     {
         $data = request()->all();
 
+        // dd($data);
+
         $validator = validator($data, [
             "SiteName" => ["required"],
             "SiteDescription" => ["required"],
             "SiteLocation" => ["required"],
-            "SiteImage" => ["required"],
+            "SiteImage" => ["required", "image"],
             "FeatureIDs" => ["required"],
             "LocalAttractionIDs" => ["required"],
         ]);
@@ -45,6 +47,12 @@ class SiteController
 
             return redirect("/admin/sites/create");
         }
+
+        $upload_file_path = uploadFilePath(getFileExt($data["SiteImage"]["name"]));
+
+        move_uploaded_file($data["SiteImage"]["tmp_name"], $upload_file_path);
+
+        $data["SiteImage"] = $upload_file_path;
 
         $feature_ids = $data["FeatureIDs"];
 
@@ -113,7 +121,8 @@ class SiteController
             "SiteName" => ["required"],
             "SiteDescription" => ["required"],
             "SiteLocation" => ["required"],
-            "SiteImage" => ["required"],
+            "OldSiteImage" => ["required"],
+            "SiteImage" => ["nullable", "image"],
             "FeatureIDs" => ["required"],
             "LocalAttractionIDs" => ["required"],
         ]);
@@ -123,6 +132,19 @@ class SiteController
 
             return redirect("/admin/sites/" . $routePrams["site_id"] . "/edit");
         }
+
+        if($data["SiteImage"]["name"]){
+            $upload_file_path = uploadFilePath(getFileExt($data["SiteImage"]["name"]));
+
+            move_uploaded_file($data["SiteImage"]["tmp_name"], $upload_file_path);
+    
+            $data["SiteImage"] = $upload_file_path;
+        }else{
+            $data["SiteImage"] = $data["OldSiteImage"];
+
+        }
+        
+        unset($data["OldSiteImage"]);
 
         $feature_ids = $data["FeatureIDs"];
 

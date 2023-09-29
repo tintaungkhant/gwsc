@@ -22,8 +22,6 @@ view("admin.layout.header");
                                 <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">ID</th>
                                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Name</th>
                                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Description</th>
-                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Location</th>
-                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Image</th>
                                 <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
                                     <span class="sr-only">Edit</span>
                                 </th>
@@ -35,8 +33,6 @@ view("admin.layout.header");
                                 <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"><?php echo $site["SiteID"] ?></td>
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><?php echo $site["SiteName"] ?></td>
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><?php echo truncateLongText($site["SiteDescription"]) ?></td>
-                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><?php echo $site["SiteLocation"] ?></td>
-                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><?php echo $site["SiteImage"] ?></td>
                                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                                     <a href="/admin/sites/<?php echo $site["SiteID"] ?>/edit" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lindsay Walton</span></a>
                                     <a href="/admin/sites/<?php echo $site["SiteID"] ?>/delete" class="ml-2 rounded-md bg-red-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">Delete</a>

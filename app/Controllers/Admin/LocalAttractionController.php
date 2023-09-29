@@ -25,7 +25,8 @@ class LocalAttractionController
 
         $validator = validator($data, [
             "LocalAttractionName" => ["required"],
-            "LocalAttractionImage" => ["required"],
+            "LocalAttractionImage" => ["required", "image"],
+            "LocalAttractionDescription" => ["required"],
         ]);
 
         if (!$validator->validate()) {
@@ -33,6 +34,12 @@ class LocalAttractionController
 
             return redirect("/admin/local-attractions/create");
         }
+
+        $upload_file_path = uploadFilePath(getFileExt($data["LocalAttractionImage"]["name"]));
+
+        move_uploaded_file($data["LocalAttractionImage"]["tmp_name"], $upload_file_path);
+
+        $data["LocalAttractionImage"] = $upload_file_path;
 
         $site = new LocalAttraction;
         $site->create($data);
@@ -58,7 +65,9 @@ class LocalAttractionController
 
         $validator = validator($data, [
             "LocalAttractionName" => ["required"],
-            "LocalAttractionImage" => ["required"],
+            "OldLocalAttractionImage" => ["required"],
+            "LocalAttractionImage" => ["nullable", "image"],
+            "LocalAttractionDescription" => ["required"],
         ]);
 
         if (!$validator->validate()) {
@@ -66,6 +75,19 @@ class LocalAttractionController
 
             return redirect("/admin/local-attractions/" . $routePrams["local_attraction_id"] . "/edit");
         }
+
+        if($data["LocalAttractionImage"]["name"]){
+            $upload_file_path = uploadFilePath(getFileExt($data["LocalAttractionImage"]["name"]));
+
+            move_uploaded_file($data["LocalAttractionImage"]["tmp_name"], $upload_file_path);
+    
+            $data["LocalAttractionImage"] = $upload_file_path;
+        }else{
+            $data["LocalAttractionImage"] = $data["OldLocalAttractionImage"];
+
+        }
+        
+        unset($data["OldLocalAttractionImage"]);
 
         $site = new LocalAttraction;
         $site->update($routePrams["local_attraction_id"], $data);

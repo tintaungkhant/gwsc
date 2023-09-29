@@ -12,7 +12,6 @@ class LoginController
     }
 
     public function login(){
-        // TODO: validation
         $data = request()->all();
 
         $validator = validator($data, [

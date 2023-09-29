@@ -31,6 +31,42 @@ class Site extends Model
         return $sites;
     }
 
+    public function getAllAvailableSites($pitch_type = "", $keyword = "")
+    {
+        $query  = "SELECT
+        available_sites.AvailableSiteID,
+        sites.SiteID,
+        sites.SiteName,
+        sites.SiteDescription,
+        sites.SiteImage,
+        pitch_types.PitchTypeID,
+        pitch_types.PitchTypeName,
+        available_sites.Slot,
+        available_sites.Fee
+    FROM
+        sites
+    INNER JOIN
+        available_sites ON sites.SiteID = available_sites.SiteID
+    INNER JOIN
+        pitch_types ON available_sites.PitchTypeID = pitch_types.PitchTypeID
+    WHERE
+        available_sites.Slot > 0 ";
+
+        if ($pitch_type) {
+            $query .= "AND pitch_types.PitchTypeID = $pitch_type ";
+        }
+
+        if ($keyword) {
+            $query .= "AND sites.SiteName LIKE '%$keyword%' ";
+        }
+
+        $query .= "ORDER BY sites.SiteName";
+
+        $sites = db()->query($query)->get();
+
+        return $sites;
+    }
+
     public function firstByIDWithRelations($id)
     {
         $query = "SELECT sites.*, GROUP_CONCAT(features.FeatureID) AS FeatureIDs, GROUP_CONCAT(local_attractions.LocalAttractionID) AS LocalAttractionIDs

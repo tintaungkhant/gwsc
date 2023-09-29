@@ -57,6 +57,12 @@ function checkIfMatch($route_name, $uri, &$routePrams)
 {
     $route_name = explode("/", $route_name);
 
+    $queryParams = array_merge($routePrams, getParamArray($uri));
+
+    $trimedUri = strstr($uri, '?', true);
+
+    $uri = $trimedUri ? $trimedUri : $uri;
+    
     $uri = explode("/", $uri);
 
     $match = true;
@@ -75,6 +81,10 @@ function checkIfMatch($route_name, $uri, &$routePrams)
         $match = false;
     }
 
+    if($match){
+        $routePrams = array_merge($queryParams, $routePrams);
+    }
+
     return $match;
 }
 
@@ -83,4 +93,27 @@ function extractSegmentWord($segment)
     $pattern = '/\{(.*?)\}/';
     preg_match($pattern, $segment, $matches);
     return $matches[1];
+}
+
+function getParamArray($uri){
+    $params = [];
+
+    $pos = strpos($uri, '?');
+
+    $queryString = "";
+
+    if ($pos !== false) {
+        $queryString = substr($uri, $pos + 1);
+    }
+
+    if($queryString){
+        $queryParts = explode('&', $queryString);
+
+        foreach ($queryParts as $part) {
+            list($key, $value) = explode('=', $part);
+            $params[$key] = urldecode($value);
+        }
+    }    
+    
+    return $params;
 }
