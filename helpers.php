@@ -7,7 +7,7 @@ use App\Utils\Validator;
 
 function config($key, $default = null)
 {
-    $configPath = 'configs/';
+    $configPath = __DIR__.'/configs/';
     $keys = explode('.', $key);
     $config = [];
 
