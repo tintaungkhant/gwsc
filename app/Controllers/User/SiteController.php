@@ -3,6 +3,7 @@
 namespace App\Controllers\User;
 
 use App\Models\PitchType;
+use App\Models\Review;
 use App\Models\Site;
 
 class SiteController
@@ -21,11 +22,24 @@ class SiteController
         return view("user.sites.index", ["sites" => $sites, "pitch_types" => $pitch_types, "pitch_type_id" => $pitch_type_id, "site_name" => $site_name]);
     }
 
-    public function show($routePram)
+    public function show($routeParams)
     {
         $site = new Site;
-        $site = $site->firstByIDWithRelations($routePram["site_id"]);
+        $site = $site->firstByIDWithRelations($routeParams["site_id"]);
 
-        return view("user.sites.show", ["site" => $site]);
+        $pitch_type = new PitchType;
+        $pitch_types = $pitch_type->getPitchTypes($routeParams["site_id"]);
+
+        $reviews = new Review;
+        $reviews = $reviews->getBySiteID($routeParams["site_id"]);
+
+        return view("user.sites.show", ["site" => $site, "pitch_types" => $pitch_types, "reviews" => $reviews]);
+    }
+
+    public function review(){
+        $review = new Review;
+        $review = $review->create(request()->all());
+
+        return redirect("/sites/".request()->get("SiteID"));
     }
 }

@@ -100,20 +100,6 @@ function validator($data, $rules)
     return new Validator($data, $rules);
 }
 
-function adminAuth()
-{
-    if (!isset($_SESSION["admin"]) || empty($_SESSION["admin"])) {
-        redirect("/admin/login");
-    };
-}
-
-function userAuth()
-{
-    if (!isset($_SESSION["admin"]) || empty($_SESSION["admin"])) {
-        redirect("/user/login");
-    };
-}
-
 function setErrorMessages($errors)
 {
     return session()->set("errors", $errors);
@@ -190,4 +176,12 @@ function uploadFilePath($ext=""){
 
 function getFileExt($path){
     return strtolower(pathinfo($path)["extension"]);
+}
+
+function authUser(){
+    return session()->get("user") ? session()->get("user") : [];
+}
+
+function authAdmin(){
+    return session()->get("admin") ? session()->get("admin") : [];
 }

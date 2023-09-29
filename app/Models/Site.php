@@ -33,7 +33,7 @@ class Site extends Model
 
     public function getAllAvailableSites($pitch_type = "", $keyword = "")
     {
-        $query  = "SELECT
+        $query  = "SELECT DISTINCT
         available_sites.AvailableSiteID,
         sites.SiteID,
         sites.SiteName,
@@ -82,11 +82,15 @@ class Site extends Model
 
         $feature_ids =  $site["FeatureIDs"] ? explode(",", $site["FeatureIDs"]) : [];
 
+        $local_attraction_ids = array_unique($feature_ids);
+
         foreach ($feature_ids as $feature_id) {
             $site["features"][] = (new Feature)->firstByID($feature_id);
         }
 
         $local_attraction_ids =  $site["LocalAttractionIDs"] ? explode(",", $site["LocalAttractionIDs"]) : [];
+
+        $local_attraction_ids = array_unique($local_attraction_ids);
 
         foreach ($local_attraction_ids as $local_attraction_id) {
             $site["local_attractions"][] = (new LocalAttraction)->firstByID($local_attraction_id);

@@ -13,11 +13,11 @@ view("user.layout.header");
         <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                 <div class="flex flex-col p-8">
-                    <img class="mx-auto w-full flex-shrink-0 rounded" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=512&h=512&q=60" alt="">
-                    <h3 class="mt-6 text-lg font-medium text-gray-900">Jane Cooper</h3>
+                    <img class="mx-auto w-full flex-shrink-0 rounded" src="<?php echo $local_attraction["LocalAttractionImage"] ?>" alt="">
+                    <h3 class="mt-6 text-lg font-medium text-gray-900"><?php echo $local_attraction["LocalAttractionName"] ?></h3>
                     <div class="mt-1 flex flex-grow flex-col justify-between">
                         <p class="text-sm text-gray-500">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam nisi neque earum qui fugiat asperiores eum eveniet reprehenderit. Blanditiis laudantium odio repellat corrupti optio excepturi illum deserunt eos illo consectetur?
+                            <?php echo $local_attraction["LocalAttractionDescription"] ?>
                         </p>
                     </div>
                 </div>

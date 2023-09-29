@@ -8,18 +8,31 @@ use App\Controllers\Admin\LocalAttractionController;
 use App\Controllers\Admin\LoginController;
 use App\Controllers\Admin\PitchTypeController;
 use App\Controllers\Admin\SiteController;
+use App\Controllers\User\BookingController;
+use App\Controllers\User\ContactController;
 use App\Controllers\User\HomeController as UserHomeController;
+use App\Controllers\User\LocalAttractionController as UserLocalAttractionController;
+use App\Controllers\User\LoginController as UserLoginController;
+use App\Controllers\User\PrivacyPolicyController;
+use App\Controllers\User\RegisterController;
 use App\Controllers\User\SiteController as UserSiteController;
+use App\Middleware\AdminAuthMiddleware;
+use App\Middleware\UserAuthMiddleware;
 
 return [
     [
         "middleware" => "",
         "prefix" => "/admin",
         "routes" => [
-            "/" => [HomeController::class, "index"],
-
             "/login" => [LoginController::class, "index"],
             "/post-login" => [LoginController::class, "login"],
+        ]
+    ],
+    [
+        "middleware" => AdminAuthMiddleware::class,
+        "prefix" => "/admin",
+        "routes" => [
+            "/" => [HomeController::class, "index"],
 
             "/sites" => [SiteController::class, "index"],
             "/sites/create" => [SiteController::class, "create"],
@@ -63,15 +76,38 @@ return [
             "/available-sites/{available_site_id}/update" => [AvailableSiteController::class, "update"],
             "/available-sites/{available_site_id}/delete" => [AvailableSiteController::class, "delete"],
         ]
-        ],
-        [
-            "middleware" => "",
-            "prefix" => "",
-            "routes" => [
-                "/" => [UserHomeController::class, "index"],
+    ],
+    [
+        "middleware" => "",
+        "prefix" => "",
+        "routes" => [
+            "/" => [UserHomeController::class, "index"],
 
-                "/sites" => [UserSiteController::class, "index"],
-                "/sites/{site_id}" => [UserSiteController::class, "show"],
-            ]
+            "/login" => [UserLoginController::class, "index"],
+            "/post-login" => [UserLoginController::class, "login"],
+
+            "/register" => [RegisterController::class, "index"],
+            "/post-register" => [RegisterController::class, "register"],
+
+            "/sites" => [UserSiteController::class, "index"],
+            "/sites/{site_id}" => [UserSiteController::class, "show"],
+
+            "/local-attractions/{local_attraction_id}" => [UserLocalAttractionController::class, "show"],
+
+            "/contact" => [ContactController::class, "index"],
+            "/post-contact" => [ContactController::class, "contact"],
+
+            "/privacy-policy" => [PrivacyPolicyController::class, "index"]
         ]
+    ],
+    [
+        "middleware" => UserAuthMiddleware::class,
+        "prefix" => "",
+        "routes" => [
+            "/sites/{site_id}/review" => [UserSiteController::class, "review"],
+            "/sites/{site_id}/book" => [BookingController::class, "index"],
+            "/sites/{site_id}/post-book" => [BookingController::class, "book"],
+            "/booking/{booking_id}" => [BookingController::class, "show"],
+        ]
+    ]
 ];

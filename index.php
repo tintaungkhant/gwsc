@@ -38,6 +38,11 @@ function matchRoute($routes, $uri, &$routePrams)
 {
     foreach ($routes as $route_name => $route) {
         if (checkIfMatch($route_name, $uri, $routePrams)) {
+            $middleware = $route["middleware"];
+            if($middleware){
+                (new $route["middleware"])->handle();
+            }
+
             $controller =  $route["action"][0];
             $action = $route["action"][1];
 

@@ -27,6 +27,16 @@ class AvailableSite extends Model
         return $this->create($data);
     }
 
+    public function updateSlot($site_id, $pitch_type_id, $slot){
+        $query = "SELECT * FROM available_sites WHERE SiteID = " . $site_id . " AND PitchTypeID = " . $pitch_type_id . " LIMIT 1";
+
+        $data = db()->query($query)->first();
+
+        $data["Slot"] = $data["Slot"] - $slot;
+
+        return $this->update($data["AvailableSiteID"], $data);
+    }
+
     public function getAllWithRelations()
     {
         $query  = "SELECT

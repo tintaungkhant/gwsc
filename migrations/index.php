@@ -64,11 +64,51 @@ function db()
 // );";
 // db()->query($query);
 
-$query = "CREATE TABLE `available_sites` (
-  `AvailableSiteID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `SiteID` INT,
-  `PitchTypeID` INT,
-  `Slot` INT DEFAULT 1,
-  `Fee` INT,
+// $query = "CREATE TABLE `available_sites` (
+//   `AvailableSiteID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+//   `SiteID` INT,
+//   `PitchTypeID` INT,
+//   `Slot` INT DEFAULT 1,
+//   `Fee` INT,
+// );";
+// db()->query($query);
+
+// $query = "CREATE TABLE `users` (
+//     `UserID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+//     `UserFirstName` varchar(50) DEFAULT NULL,
+//     `UserLastName` varchar(50) DEFAULT NULL,
+//     `UserEmail` varchar(50) DEFAULT NULL,
+//     `UserPassword` varchar(255) DEFAULT NULL
+//   );";
+// db()->query($query);
+
+// $query = "CREATE TABLE `bookings` (
+//   `BookingID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+//   `BookingSiteID` INT NOT NULL,
+//   `BookingPitchTypeID` INT NOT NULL,
+//   `BookingSlot` INT NOT NULL,
+//   `BookingFirstName` varchar(50) DEFAULT NULL,
+//   `BookingLastName` varchar(50) DEFAULT NULL,
+//   `BookingEmail` varchar(50) DEFAULT NULL,
+//   `BookingNote` TEXT DEFAULT NULL
+// );";
+// db()->query($query);
+
+// $query = "CREATE TABLE `reviews` (
+//   `ReviewID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+//   `SiteID` INT NOT NULL,
+//   `UserID` INT NOT NULL,
+//   `ReviewComment` TEXT DEFAULT NULL,
+//   `ReviewCreatedAt` DATETIME DEFAULT NOW()
+// );";
+// db()->query($query);
+
+$query = "CREATE TABLE `contacts` (
+  `ContactID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `ContactType` varchar(50),
+  `ContactFirstName` varchar(50),
+  `ContactLastName` varchar(50),
+  `ContactEmail` varchar(50),
+  `ContactDescription` TEXT
 );";
 db()->query($query);
