@@ -4,11 +4,6 @@ view("user.layout.header");
 ?>
 
 <div>
-    <div class="sm:flex sm:items-center">
-        <div class="sm:flex-auto">
-            <h1 class="text-base font-semibold leading-6 text-gray-900">Homepage</h1>
-        </div>
-    </div>
     <div class="rounded-md bg-green-50 p-4">
         <div class="flex">
             <div class="flex-shrink-0">

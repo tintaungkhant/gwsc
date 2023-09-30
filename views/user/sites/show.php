@@ -4,12 +4,7 @@ view("user.layout.header");
 ?>
 
 <div>
-    <div class="sm:flex sm:items-center">
-        <div class="sm:flex-auto">
-            <h1 class="text-base font-semibold leading-6 text-gray-900">Homepage</h1>
-        </div>
-    </div>
-    <div class="mt-8 flow-root">
+    <div class="flow-root">
         <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                 <div class="flex flex-col p-8">
@@ -49,6 +44,10 @@ view("user.layout.header");
                                     <li><?php echo $feature["FeatureName"] ?></li>
                                 <?php endforeach ?>
                             </ul>
+                        </div>
+                        <div class="mt-6">
+                            <h4 class="text-md font-medium text-gray-900">Location</h4>
+                            <div><?php echo $site["SiteLocation"] ?></div>
                         </div>
                         <div class="mt-6">
                             <h4 class="text-md font-medium text-gray-900">Local Attractions</h4>
