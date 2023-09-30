@@ -6,6 +6,7 @@ use App\Controllers\Admin\FeatureController;
 use App\Controllers\Admin\HomeController;
 use App\Controllers\Admin\LocalAttractionController;
 use App\Controllers\Admin\LoginController;
+use App\Controllers\Admin\LogoutController;
 use App\Controllers\Admin\PitchTypeController;
 use App\Controllers\Admin\SiteController;
 use App\Controllers\User\BookingController;
@@ -13,6 +14,7 @@ use App\Controllers\User\ContactController;
 use App\Controllers\User\HomeController as UserHomeController;
 use App\Controllers\User\LocalAttractionController as UserLocalAttractionController;
 use App\Controllers\User\LoginController as UserLoginController;
+use App\Controllers\User\LogoutController as UserLogoutController;
 use App\Controllers\User\PrivacyPolicyController;
 use App\Controllers\User\RegisterController;
 use App\Controllers\User\SiteController as UserSiteController;
@@ -32,6 +34,8 @@ return [
         "middleware" => AdminAuthMiddleware::class,
         "prefix" => "/admin",
         "routes" => [
+            "/logout" => [LogoutController::class, "index"],
+
             "/" => [HomeController::class, "index"],
 
             "/sites" => [SiteController::class, "index"],
@@ -104,6 +108,8 @@ return [
         "middleware" => UserAuthMiddleware::class,
         "prefix" => "",
         "routes" => [
+            "/logout" => [UserLogoutController::class, "index"],
+
             "/sites/{site_id}/review" => [UserSiteController::class, "review"],
             "/sites/{site_id}/book" => [BookingController::class, "index"],
             "/sites/{site_id}/post-book" => [BookingController::class, "book"],
