@@ -3,7 +3,7 @@
 return [
     "username" => "root",
     "password" => "password",
-    "database" => "my_camping",
+    "database" => "camping",
     "host" => "localhost",
     "port" => "3306",
 ];

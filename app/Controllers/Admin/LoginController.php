@@ -34,7 +34,7 @@ class LoginController
         if($admin){
             session()->set("admin", $admin);
             
-            return redirect("/admin");
+            return redirect("/admin/sites");
         }else{
             setErrorMessages([
                 "common" => ["Your account credential is wrong!"]

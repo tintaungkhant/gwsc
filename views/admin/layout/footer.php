@@ -40,5 +40,12 @@
         </div>
     </div>
 </footer>
-
+<script>
+    function showMobileNav() {
+        document.querySelector("#mobile_nav").setAttribute("class", "block");
+    }
+    function hideMobileNav() {
+        document.querySelector("#mobile_nav").setAttribute("class", "hidden");
+    }
+</script>
 </html>

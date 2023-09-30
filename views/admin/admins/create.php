@@ -37,5 +37,5 @@ view("admin.layout.header");
 </div>
 
 <?php
-view("admin.layout.header");
+view("admin.layout.footer");
 ?>

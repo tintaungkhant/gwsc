@@ -27,5 +27,5 @@ view("user.layout.header");
 </div>
 
 <?php
-view("user.layout.header");
+view("user.layout.footer");
 ?>

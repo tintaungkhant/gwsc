@@ -14,9 +14,6 @@ $password = hash("md5", "password");
 $query = "INSERT INTO `admins` (`AdminUsername`, `AdminPassword`, `AdminRole`) VALUES ('admin', '$password', 'admin')";
 db()->query($query);
 
-$query = "INSERT INTO `admins` (`AdminUsername`, `AdminPassword`, `AdminRole`) VALUES ('admin', '$password', 'admin')";
-db()->query($query);
-
 $query = "CREATE TABLE `sites` (
     `SiteID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `SiteName` varchar(50),
@@ -32,10 +29,16 @@ $query = "CREATE TABLE `pitch_types` (
 );";
 db()->query($query);
 
+$query = "INSERT INTO `pitch_types` (`PitchTypeName`) VALUES ('Tent pitch'), ('Caravan pitch'), ('Motorhome pitch')";
+db()->query($query);
+
 $query = "CREATE TABLE `features` (
   `FeatureID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `FeatureName` varchar(50) DEFAULT NULL
 );";
+db()->query($query);
+
+$query = "INSERT INTO `features` (`FeatureName`) VALUES ('Wifi'), ('Powerbank'), ('Shower')";
 db()->query($query);
 
 $query = "CREATE TABLE `site_feature` (
@@ -48,7 +51,7 @@ db()->query($query);
 $query = "CREATE TABLE `local_attractions` (
   `LocalAttractionID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `LocalAttractionName` varchar(50) DEFAULT NULL,
-  `LocalAttractionImage` TEXT DEFAULT NULL
+  `LocalAttractionImage` TEXT DEFAULT NULL,
   `LocalAttractionDescription` TEXT DEFAULT NULL
 );";
 db()->query($query);
@@ -65,7 +68,7 @@ $query = "CREATE TABLE `available_sites` (
   `SiteID` INT,
   `PitchTypeID` INT,
   `Slot` INT DEFAULT 1,
-  `Fee` INT,
+  `Fee` INT
 );";
 db()->query($query);
 

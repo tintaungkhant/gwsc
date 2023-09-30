@@ -165,7 +165,7 @@ function dd($value){
 }
 
 function uploadFilePath($ext=""){
-    $path = "/public/uploads/";
+    $path = "public/uploads/";
     if(!$ext){
         return $path;
     }

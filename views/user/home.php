@@ -10,7 +10,7 @@ view("user.layout.header");
                 <div class="flex flex-wrap justify-between">
                     <?php foreach($sites as $site): ?>
                     <a href="/sites/<?php echo $site["SiteID"] ?>" class="flex flex-col p-8 rounded hover:shadow hover:bg-gray-50 w-full md:w-1/2">
-                        <img class="mx-auto w-full flex-shrink-0 rounded" src="<?php echo $site["SiteImage"] ?>" alt="">
+                        <img class="mx-auto w-full flex-shrink-0 rounded" src="/<?php echo $site["SiteImage"] ?>" alt="">
                         <h3 class="mt-6 text-sm font-medium text-gray-900"><?php echo $site["SiteName"] ?> (<?php echo $site["PitchTypeName"] ?>)</h3>
                         <div class="mt-1 flex flex-grow flex-col justify-between">
                             <div class="sr-only">Title</div>
@@ -27,5 +27,5 @@ view("user.layout.header");
 </div>
 
 <?php
-view("user.layout.header");
+view("user.layout.footer");
 ?>
