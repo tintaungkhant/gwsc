@@ -16,10 +16,11 @@ db()->query($query);
 
 $query = "CREATE TABLE `sites` (
     `SiteID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `SiteName` varchar(50),
+    `SiteName` varchar(100),
     `SiteDescription` TEXT,
     `SiteLocation` TEXT DEFAULT NULL,
-    `SiteImage` TEXT DEFAULT NULL
+    `SiteImage` TEXT DEFAULT NULL,
+    `SiteViewCount` INT DEFAULT 0
   );";
 db()->query($query);
 
@@ -38,7 +39,7 @@ $query = "CREATE TABLE `features` (
 );";
 db()->query($query);
 
-$query = "INSERT INTO `features` (`FeatureName`) VALUES ('Wifi'), ('Powerbank'), ('Shower')";
+$query = "INSERT INTO `features` (`FeatureName`) VALUES ('Electric Hookups'), ('Water Hookups'), ('Sewer Hookups'), ('Picnic Tables'), ('Grills'), ('Restroom and Shower'), ('Dump Stations'), ('Wi-Fi'), ('Laundry'), ('Playgrounds')";
 db()->query($query);
 
 $query = "CREATE TABLE `site_feature` (
@@ -62,6 +63,7 @@ $query = "CREATE TABLE `site_local_attraction` (
   `LocalAttractionID` INT
 );";
 db()->query($query);
+
 
 $query = "CREATE TABLE `available_sites` (
   `AvailableSiteID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,

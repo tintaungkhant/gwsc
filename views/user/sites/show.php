@@ -30,34 +30,31 @@ view("user.layout.header");
                                 <?php endforeach ?>
                                 <div>
                                     <?php if (authUser()) { ?>
-                                        <button class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Book Now</button>
+                                        <button class="block rounded-md bg-indigo-500 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Book Now</button>
                                     <?php } else { ?>
                                         <a href="/login" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Login To Book</a>
-                                        <?php } ?>
+                                    <?php } ?>
                                 </div>
                             </form>
                         </div>
                         <div class="mt-6">
-                            <h4 class="text-md font-medium text-gray-900">Features</h4>
-                            <ul class="list-disc">
-                                <?php foreach ($site["features"] as $feature) : ?>
-                                    <li><?php echo $feature["FeatureName"] ?></li>
-                                <?php endforeach ?>
-                            </ul>
+                            <h4 class="text-md font-medium text-gray-900 mb-2">Features</h4>
+                            <?php foreach ($site["features"] as $feature) : ?>
+                                <span class="bg-indigo-100 text-black text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg border border-indigo-400"><?php echo $feature["FeatureName"] ?></span>
+                            <?php endforeach ?>
                         </div>
                         <div class="mt-6">
-                            <h4 class="text-md font-medium text-gray-900">Location</h4>
+                            <h4 class="text-md font-medium text-gray-900 mb-2">Location</h4>
                             <div><?php echo $site["SiteLocation"] ?></div>
                         </div>
                         <div class="mt-6">
-                            <h4 class="text-md font-medium text-gray-900">Local Attractions</h4>
+                            <h4 class="text-md font-medium text-gray-900 mb-2">Local Attractions</h4>
                             <div class="flex flex-wrap justify-between">
                                 <?php foreach ($site["local_attractions"] as $local_attraction) : ?>
                                     <a href="/local-attractions/<?php echo $local_attraction["LocalAttractionID"] ?>" class="flex flex-col p-8 rounded hover:shadow hover:bg-gray-50 w-full md:w-1/2">
-                                        <img class="mx-auto w-full flex-shrink-0 rounded" src="/<?php echo $local_attraction["LocalAttractionImage"] ?>" alt="">
+                                        <img class="mx-auto w-full h-48 object-cover flex-shrink-0 rounded" src="/<?php echo $local_attraction["LocalAttractionImage"] ?>" alt="">
                                         <h3 class="mt-6 text-sm font-medium text-gray-900"><?php echo $local_attraction["LocalAttractionName"] ?></h3>
                                         <div class="mt-1 flex flex-grow flex-col justify-between">
-                                            <div class="sr-only">Title</div>
                                             <p class="text-sm text-gray-500">
                                                 <?php echo truncateLongText($local_attraction["LocalAttractionDescription"]) ?>
                                             </p>
@@ -67,22 +64,26 @@ view("user.layout.header");
                             </div>
                         </div>
                         <div class="mt-6">
-                            <h4 class="text-md font-medium text-gray-900">Reviews</h4>
-                            <ul role="list" class="divide-y divide-gray-100">
-                                <?php foreach ($reviews as $review) : ?>
-                                    <li class="flex justify-between gap-x-6 py-5">
-                                        <div class="flex min-w-0 gap-x-4">
-                                            <div class="min-w-0 flex-auto">
-                                                <p class="text-sm font-semibold leading-6 text-gray-900"><?php echo $review["UserFirstName"] ?> <?php echo $review["UserLastName"] ?></p>
-                                                <p class="mt-1 text-xs leading-5 text-gray-500"><?php echo $review["ReviewComment"] ?></p>
+                            <h4 class="text-md font-medium text-gray-900 mb-2">Reviews</h4>
+                            <?php if (count($reviews)) : ?>
+                                <ul role="list" class="divide-y divide-gray-100">
+                                    <?php foreach ($reviews as $review) : ?>
+                                        <li class="flex justify-between gap-x-6 py-5">
+                                            <div class="flex min-w-0 gap-x-4">
+                                                <div class="min-w-0 flex-auto">
+                                                    <p class="text-sm font-semibold leading-6 text-gray-900"><?php echo $review["UserFirstName"] ?> <?php echo $review["UserLastName"] ?></p>
+                                                    <p class="mt-1 text-xs leading-5 text-gray-500"><?php echo $review["ReviewComment"] ?></p>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-                                            <p class="mt-1 text-xs leading-5 text-gray-500">At <?php echo $review["ReviewCreatedAt"] ?></p>
-                                        </div>
-                                    </li>
-                                <?php endforeach ?>
-                            </ul>
+                                            <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+                                                <p class="mt-1 text-xs leading-5 text-gray-500">At <?php echo $review["ReviewCreatedAt"] ?></p>
+                                            </div>
+                                        </li>
+                                    <?php endforeach ?>
+                                </ul>
+                            <?php else : ?>
+                                <p>There is no review yet</p>
+                            <?php endif ?>
                             <?php if (authUser()) : ?>
                                 <form action="/sites/<?php echo $site["SiteID"] ?>/review" method="POST">
                                     <input type="hidden" value="<?php echo $site["SiteID"] ?>" name="SiteID">

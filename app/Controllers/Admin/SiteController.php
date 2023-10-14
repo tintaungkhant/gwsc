@@ -47,6 +47,8 @@ class SiteController
 
             return redirect("/admin/sites/create");
         }
+        
+        $data["SiteLocation"] = preg_replace('/width="[^"]*"/', 'width="100%"', $data["SiteLocation"]);
 
         $upload_file_path = uploadFilePath(getFileExt($data["SiteImage"]["name"]));
 
@@ -132,6 +134,8 @@ class SiteController
 
             return redirect("/admin/sites/" . $routePrams["site_id"] . "/edit");
         }
+
+        $data["SiteLocation"] = preg_replace('/width="[^"]*"/', 'width="100%"', $data["SiteLocation"]);
 
         if($data["SiteImage"]["name"]){
             $upload_file_path = uploadFilePath(getFileExt($data["SiteImage"]["name"]));

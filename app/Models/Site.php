@@ -39,8 +39,6 @@ class Site extends Model
         sites.SiteName,
         sites.SiteDescription,
         sites.SiteImage,
-        pitch_types.PitchTypeID,
-        pitch_types.PitchTypeName,
         available_sites.Slot,
         available_sites.Fee
     FROM
@@ -64,8 +62,46 @@ class Site extends Model
 
         $sites = db()->query($query)->get();
 
-        return $sites;
+        $unique_sites = [];
+
+        foreach ($sites as $site) {
+            if (!isset($unique_sites[$site["SiteID"]])) {
+                $unique_sites[$site["SiteID"]] = $site;
+            }
+        }
+
+        $unique_sites = array_values($unique_sites);
+
+        return $unique_sites;
     }
+
+    public function getAllTopViewedAvailableSites($pitch_type = "", $keyword = "")
+    {
+        $query  = "SELECT DISTINCT
+        sites.SiteID,
+        sites.SiteName,
+        sites.SiteDescription,
+        sites.SiteImage,
+        sites.SiteViewCount
+    FROM
+        sites    
+    ORDER BY sites.SiteViewCount LIMIT 3";
+
+        $sites = db()->query($query)->get();
+
+        $unique_sites = [];
+
+        foreach ($sites as $site) {
+            if (!isset($unique_sites[$site["SiteID"]])) {
+                $unique_sites[$site["SiteID"]] = $site;
+            }
+        }
+
+        $unique_sites = array_values($unique_sites);
+
+        return $unique_sites;
+    }
+
 
     public function firstByIDWithRelations($id)
     {
@@ -82,7 +118,7 @@ class Site extends Model
 
         $feature_ids =  $site["FeatureIDs"] ? explode(",", $site["FeatureIDs"]) : [];
 
-        $local_attraction_ids = array_unique($feature_ids);
+        $feature_ids = array_unique($feature_ids);
 
         foreach ($feature_ids as $feature_id) {
             $site["features"][] = (new Feature)->firstByID($feature_id);
@@ -123,5 +159,16 @@ class Site extends Model
 
             db()->query($query);
         }
+    }
+
+    public function increaseViewCount($site_id)
+    {
+        $query = "SELECT * FROM sites WHERE SiteID = " . $site_id . " LIMIT 1";
+
+        $data = db()->query($query)->first();
+
+        $data["SiteViewCount"] = $data["SiteViewCount"] + 1;
+
+        return $this->update($data["SiteID"], $data);
     }
 }

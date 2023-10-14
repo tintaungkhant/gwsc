@@ -5,20 +5,34 @@ view("user.layout.header");
 
 <div>
     <div class="flow-root">
-        <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-                <div class="flex flex-wrap justify-between">
-                    <?php foreach($sites as $site): ?>
-                    <a href="/sites/<?php echo $site["SiteID"] ?>" class="flex flex-col p-8 rounded hover:shadow hover:bg-gray-50 w-full md:w-1/2">
-                        <img class="mx-auto w-full flex-shrink-0 rounded" src="/<?php echo $site["SiteImage"] ?>" alt="">
-                        <h3 class="mt-6 text-sm font-medium text-gray-900"><?php echo $site["SiteName"] ?> (<?php echo $site["PitchTypeName"] ?>)</h3>
-                        <div class="mt-1 flex flex-grow flex-col justify-between">
-                            <div class="sr-only">Title</div>
-                            <p class="text-sm text-gray-500">
-                                <?php echo truncateLongText($site["SiteDescription"]) ?>
-                            </p>
+        <div class="-mx-4 -my-2">
+            <div class="min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                <h1 class="font-medium text-lg">Popular Sites</h1>
+                <div class="slider">
+                    <?php foreach ($top_sites as $top_site) : ?>
+                        <div>
+                            <a href="/sites/<?php echo $top_site["SiteID"] ?>" class="flex flex-col p-8 rounded hover:shadow hover:bg-gray-50 w-full">
+                                <img class="mx-auto w-full h-72 object-cover object-center flex-shrink-0 rounded" src="/<?php echo $top_site["SiteImage"] ?>" alt="">
+                                <h3 class="mt-6 text-lg text-center font-medium text-gray-900"><?php echo $top_site["SiteName"] ?></h3>
+                            </a>
                         </div>
-                    </a>
+                    <?php endforeach ?>
+                </div>
+                <div class="flex justify-between items-center">
+                <h1 class="font-medium text-lg">Available Sites</h1>
+                <a href="/sites" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Explore More</a>
+                </div>
+                <div class="flex flex-wrap justify-between">
+                    <?php foreach ($sites as $site) : ?>
+                        <a href="/sites/<?php echo $site["SiteID"] ?>" class="flex flex-col p-8 rounded hover:shadow hover:bg-gray-50 w-full md:w-1/2">
+                            <img class="mx-auto w-full h-48 object-cover flex-shrink-0 rounded" src="/<?php echo $site["SiteImage"] ?>" alt="">
+                            <h3 class="mt-6 text-sm font-medium text-gray-900"><?php echo $site["SiteName"] ?></h3>
+                            <div class="mt-1 flex flex-grow flex-col justify-between">
+                                <p class="text-sm text-gray-500">
+                                    <?php echo truncateLongText($site["SiteDescription"]) ?>
+                                </p>
+                            </div>
+                        </a>
                     <?php endforeach ?>
                 </div>
             </div>

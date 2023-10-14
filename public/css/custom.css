@@ -1,0 +1,9 @@
+.slick-list.draggable{
+    height: 400px;
+}
+
+@media screen and (max-width: 466px) {
+    .slick-list.draggable{
+        height: 450px;
+    }
+}
