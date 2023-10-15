@@ -11,12 +11,14 @@ use App\Controllers\Admin\PitchTypeController;
 use App\Controllers\Admin\SiteController;
 use App\Controllers\User\BookingController;
 use App\Controllers\User\ContactController;
+use App\Controllers\User\FeatureController as UserFeatureController;
 use App\Controllers\User\HomeController as UserHomeController;
 use App\Controllers\User\LocalAttractionController as UserLocalAttractionController;
 use App\Controllers\User\LoginController as UserLoginController;
 use App\Controllers\User\LogoutController as UserLogoutController;
 use App\Controllers\User\PrivacyPolicyController;
 use App\Controllers\User\RegisterController;
+use App\Controllers\User\RSSFeedController;
 use App\Controllers\User\SiteController as UserSiteController;
 use App\Middleware\AdminAuthMiddleware;
 use App\Middleware\UserAuthMiddleware;
@@ -96,12 +98,16 @@ return [
             "/sites" => [UserSiteController::class, "index"],
             "/sites/{site_id}" => [UserSiteController::class, "show"],
 
+            "/features" => [UserFeatureController::class, "index"],
+
             "/local-attractions/{local_attraction_id}" => [UserLocalAttractionController::class, "show"],
 
             "/contact" => [ContactController::class, "index"],
             "/post-contact" => [ContactController::class, "contact"],
 
-            "/privacy-policy" => [PrivacyPolicyController::class, "index"]
+            "/privacy-policy" => [PrivacyPolicyController::class, "index"],
+
+            "/rss-feeds" => [RSSFeedController::class, "index"],
         ]
     ],
     [

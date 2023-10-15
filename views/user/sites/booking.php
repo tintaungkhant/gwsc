@@ -45,6 +45,18 @@ view("user.layout.header");
                         <span class="text-sm leading-6 text-gray-900"><?php echo $pitch_type["Slot"] ?> slot(s) left</span>
                     </div>
                 </div>
+                <?php
+                $user = authUser();
+                if ($user) {
+                    $first_name = $user["UserFirstName"];
+                    $surname = $user["UserLastName"];
+                    $email = $user["UserEmail"];
+                } else {
+                    $first_name = "";
+                    $surname = "";
+                    $email = "";
+                }
+                ?>
                 <form action="/sites/<?php echo $site["SiteID"] ?>/post-book" method="POST">
                     <input type="hidden" name="BookingSiteID" value="<?php echo $site["SiteID"] ?>">
                     <input type="hidden" name="BookingPitchTypeID" value="<?php echo $pitch_type["PitchTypeID"] ?>">
@@ -57,19 +69,19 @@ view("user.layout.header");
                     <div class="mb-3">
                         <label for="BookingFirstName" class="block text-sm font-medium leading-6 text-gray-900">First Name</label>
                         <div class="mt-2">
-                            <input type="text" name="BookingFirstName" id="BookingFirstName" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            <input type="text" name="BookingFirstName" value="<?php echo $first_name ?>" id="BookingFirstName" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="BookingLastName" class="block text-sm font-medium leading-6 text-gray-900">Last Name</label>
+                        <label for="BookingLastName" class="block text-sm font-medium leading-6 text-gray-900">Surname</label>
                         <div class="mt-2">
-                            <input type="text" name="BookingLastName" id="BookingLastName" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            <input type="text" name="BookingLastName" value="<?php echo $surname ?>" id="BookingLastName" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="BookingEmail" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
                         <div class="mt-2">
-                            <input type="email" name="BookingEmail" id="BookingEmail" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            <input type="email" name="BookingEmail" value="<?php echo $email ?>" id="BookingEmail" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         </div>
                     </div>
                     <div class="mb-3">

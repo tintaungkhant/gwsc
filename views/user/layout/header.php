@@ -23,6 +23,7 @@
             <a href="/sites" class="text-sm font-semibold leading-6 text-gray-900">Sites</a>
             <a href="/contact" class="text-sm font-semibold leading-6 text-gray-900">Contact Us</a>
             <a href="/privacy-policy" class="text-sm font-semibold leading-6 text-gray-900">Privacy Policy</a>
+            <a href="/rss-feeds" class="text-sm font-semibold leading-6 text-gray-900">Rss Feed</a>
             <?php if (authUser()) : ?>
                 <a href="/logout" class="text-sm font-semibold leading-6 text-gray-900">Logout</a>
             <?php else : ?>
@@ -53,6 +54,7 @@
                         <a href="/sites" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Sites</a>
                         <a href="/contact" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Contact Us</a>
                         <a href="/privacy-policy" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Privacy Policy</a>
+                        <a href="/rss-feeds" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">RSS feed</a>
                         <?php if (authUser()) : ?>
                         <a href="/logout" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Logout</a>
                         <?php endif ?>

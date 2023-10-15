@@ -40,7 +40,7 @@ view("user.layout.header");
                         <div class="mt-6">
                             <h4 class="text-md font-medium text-gray-900 mb-2">Features</h4>
                             <?php foreach ($site["features"] as $feature) : ?>
-                                <span class="bg-indigo-100 text-black text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg border border-indigo-400"><?php echo $feature["FeatureName"] ?></span>
+                                <a href="/features" class="bg-indigo-100 text-black text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg border border-indigo-400"><?php echo $feature["FeatureName"] ?></a>
                             <?php endforeach ?>
                         </div>
                         <div class="mt-6">

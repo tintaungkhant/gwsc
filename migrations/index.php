@@ -1,6 +1,6 @@
 <?php
-require __DIR__."/../app/Utils/Db.php";
-require __DIR__."/../helpers.php";
+require __DIR__ . "/../app/Utils/Db.php";
+require __DIR__ . "/../helpers.php";
 
 $query = "CREATE TABLE `admins` (
     `AdminID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -35,11 +35,22 @@ db()->query($query);
 
 $query = "CREATE TABLE `features` (
   `FeatureID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `FeatureName` varchar(50) DEFAULT NULL
+  `FeatureName` varchar(50) DEFAULT NULL,
+  `FeatureDescription` TEXT
 );";
 db()->query($query);
 
-$query = "INSERT INTO `features` (`FeatureName`) VALUES ('Electric Hookups'), ('Water Hookups'), ('Sewer Hookups'), ('Picnic Tables'), ('Grills'), ('Restroom and Shower'), ('Dump Stations'), ('Wi-Fi'), ('Laundry'), ('Playgrounds')";
+$query = "INSERT INTO `features` (`FeatureName`,`FeatureDescription`) VALUES 
+('GPS Smartwatches', 'Campers can rent or purchase GPS smartwatches that are pre-loaded with maps and trails of the campsite. These watches can provide navigation, emergency alerts, and real-time tracking to ensure campers'' safety.'), 
+('Smart Clothing', 'Campers can opt for smart clothing items that are equipped with integrated sensors and technology. These items may include temperature-regulating jackets, moisture-wicking socks, or UV-protective hats, enhancing comfort and safety during outdoor activities.'), 
+('Health and Fitness Trackers', 'Campers can rent health and fitness trackers that monitor vital signs and activity levels. These devices can help campers keep track of their physical well-being during their stay, ensuring they stay safe and healthy.'), 
+('Emergency Locator Beacons', 'Campers can carry emergency locator beacons that can be worn as wristbands or attached to clothing. These beacons can be activated in case of emergencies to signal for help, sending distress signals and GPS coordinates to rescue services.'), 
+('Grills', 'Campers can enjoy our convenient grills, perfect for outdoor cooking. Whether you''re a grilling expert or just want to make classic campfire cuisine, our grills make it easy to create delicious BBQ dishes or toast marshmallows for a tasty campfire treat.'), 
+('Restroom and Shower', 'Our well-maintained restroom and shower facilities provide campers with a clean and convenient place to freshen up. After a day of outdoor activities, campers can enjoy a hot shower for a comfortable and refreshing experience.'), 
+('Dump Stations', 'For RV campers, our campsite offers convenient dump stations for hassle-free wastewater disposal. Keep your recreational vehicle clean and efficient so campers can focus on relaxation and exploration.'), 
+('Wi-Fi', 'Stay connected with the world while surrounded by nature. Our campsite provides Wi-Fi access, allowing campers to stay in touch with loved ones, share camping adventures, or even catch up on work if needed. Enjoy the flexibility to unplug or stay connected.'), 
+('Laundry', 'Campers on extended trips can keep their clothes clean with our on-site laundry facilities. Wash and dry your laundry conveniently, ensuring a comfortable and stylish camping experience.'), 
+('Playgrounds', 'Families with young campers can enjoy our secure playgrounds. Designed for safety, our playgrounds offer a fun environment for kids to play and make new friends while parents relax at the campsite. Add family-friendly enjoyment to your camping experience.')";
 db()->query($query);
 
 $query = "CREATE TABLE `site_feature` (
@@ -83,6 +94,10 @@ $query = "CREATE TABLE `users` (
   );";
 db()->query($query);
 
+$password = hash("md5", "password");
+$query = "INSERT INTO `admins` (`UserFirstName`, `UserLastName`, `UserEmail`, `UserPassword`) VALUES ('Shawn M', 'Christian', 'shawnmchristian@armyspy.com', '$password'), ('Jeffrey S', 'Arnold', 'jeffreysarnold@teleworm.us', '$password')";
+db()->query($query);
+
 $query = "CREATE TABLE `bookings` (
   `BookingID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `BookingSiteID` INT NOT NULL,
@@ -113,3 +128,65 @@ $query = "CREATE TABLE `contacts` (
   `ContactDescription` TEXT
 );";
 db()->query($query);
+
+$query = "CREATE TABLE `rss_feeds` (
+  `RSSFeedID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `RSSFeedTitle` varchar(50),
+  `RSSFeedURI` varchar(100),
+  `RSSFeedDescription` TEXT
+);";
+
+db()->query($query);
+
+$rss_feeds = [
+  [
+    "RSSFeedTitle" => "Home",
+    "RSSFeedURI" => "/",
+    "RSSFeedDescription" => "This is home page showing popular campsites and some campsites",
+  ],
+  [
+    "RSSFeedTitle" => "Login",
+    "RSSFeedURI" => "/login",
+    "RSSFeedDescription" => "This is login page where users can login to our site.",
+  ],
+  [
+    "RSSFeedTitle" => "Register",
+    "RSSFeedURI" => "/register",
+    "RSSFeedDescription" => "This is register page where users can register their account.",
+  ],
+  [
+    "RSSFeedTitle" => "Campsites",
+    "RSSFeedURI" => "/sites",
+    "RSSFeedDescription" => "A page where users can search and check detail of a site.",
+  ],
+  [
+    "RSSFeedTitle" => "Site Detail",
+    "RSSFeedURI" => "/sites/{site_id}",
+    "RSSFeedDescription" => "This site detail page showing a campsite''s details including its features, prices, local attraction, and so on.",
+  ],
+  [
+    "RSSFeedTitle" => "Features",
+    "RSSFeedURI" => "/features",
+    "RSSFeedDescription" => "This is where all features and their descriptions are provided",
+  ],
+  [
+    "RSSFeedTitle" => "Local Attraction",
+    "RSSFeedURI" => "/local-attractions/{local_attraction_id}",
+    "RSSFeedDescription" => "This page is showing a local attraction details.",
+  ],
+  [
+    "RSSFeedTitle" => "Contact",
+    "RSSFeedURI" => "/contact",
+    "RSSFeedDescription" => "Users can contact us through this page by providing their issues.",
+  ],
+  [
+    "RSSFeedTitle" => "Privacy Policy.",
+    "RSSFeedURI" => "/privacy-policy",
+    "RSSFeedDescription" => "This page is showing our privacy and policy.",
+  ]
+];
+
+foreach ($rss_feeds as $rss_feed) {
+  $query = "INSERT INTO `rss_feeds` (`RSSFeedTitle`, `RSSFeedURI`, `RSSFeedDescription`) VALUES ('" . $rss_feed["RSSFeedTitle"] . "', '" . $rss_feed["RSSFeedURI"] . "', '" . $rss_feed["RSSFeedDescription"] . "')";
+  db()->query($query);
+}
