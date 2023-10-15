@@ -39,6 +39,7 @@ class Site extends Model
         sites.SiteName,
         sites.SiteDescription,
         sites.SiteImage,
+        sites.SiteViewCount,
         available_sites.Slot,
         available_sites.Fee
     FROM

@@ -27,6 +27,9 @@ view("user.layout.header");
                         <a href="/sites/<?php echo $site["SiteID"] ?>" class="flex flex-col p-8 rounded hover:shadow hover:bg-gray-50 w-full md:w-1/2">
                             <img class="mx-auto w-full h-48 object-cover flex-shrink-0 rounded" src="/<?php echo $site["SiteImage"] ?>" alt="">
                             <h3 class="mt-6 text-sm font-medium text-gray-900"><?php echo $site["SiteName"] ?></h3>
+                            <div class="flex items-center">
+                            <i class="fa-solid fa-eye text-sm text-gray-500 mr-1"></i><span class="text-sm"><?php echo $site["SiteViewCount"] ?></span>
+                            </div>
                             <div class="mt-1 flex flex-grow flex-col justify-between">
                                 <p class="text-sm text-gray-500">
                                     <?php echo truncateLongText($site["SiteDescription"]) ?>
