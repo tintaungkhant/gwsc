@@ -4,7 +4,7 @@ view("admin.layout.header");
 ?>
 
 <div>
-    <div class="sm:flex sm:items-center">
+    <div class="sm:flex sm:items-center mb-4">
         <div class="sm:flex-auto">
             <h1 class="text-base font-semibold leading-6 text-gray-900">Features</h1>
         </div>
@@ -21,6 +21,7 @@ view("admin.layout.header");
                             <tr>
                                 <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">ID</th>
                                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Feature Name</th>
+                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Feature Icon</th>
                                 <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6"></th>
                             </tr>
                         </thead>
@@ -29,6 +30,7 @@ view("admin.layout.header");
                             <tr>
                                 <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"><?php echo $feature["FeatureID"] ?></td>
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><?php echo $feature["FeatureName"] ?></td>
+                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><?php echo $feature["FeatureIcon"] ?></td>
                                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                                     <a href="/admin/features/<?php echo $feature["FeatureID"] ?>/edit" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                                     <a href="/admin/features/<?php echo $feature["FeatureID"] ?>/delete" class="btn-danger">Delete</a>

@@ -4,11 +4,6 @@ view("user.layout.header");
 ?>
 
 <div>
-    <div class="sm:flex sm:items-center">
-        <div class="sm:flex-auto">
-            <h1 class="text-base font-semibold leading-6 text-gray-900">Contact Us</h1>
-        </div>
-    </div>
     <?php echo showErrorBlock() ?>
     <div class="flow-root">
         <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -35,19 +30,19 @@ view("user.layout.header");
                         <div class="mb-3">
                             <label for="ContactFirstName" class="block text-sm font-medium leading-6 text-gray-900">First Name</label>
                             <div class="mt-2">
-                                <input type="text" name="ContactFirstName" disabled value="<?php echo $first_name ?>" id="ContactFirstName" class="input-box">
+                                <input type="text" name="ContactFirstName" value="<?php echo $first_name ?>" id="ContactFirstName" class="input-box">
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="ContactLastName" class="block text-sm font-medium leading-6 text-gray-900">Surname</label>
                             <div class="mt-2">
-                                <input type="text" name="ContactLastName" disabled value="<?php echo $surname ?>" id="ContactLastName" class="input-box">
+                                <input type="text" name="ContactLastName" value="<?php echo $surname ?>" id="ContactLastName" class="input-box">
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="ContactEmail" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
                             <div class="mt-2">
-                                <input type="email" name="ContactEmail" disabled value="<?php echo $email ?>" id="ContactEmail" class="input-box">
+                                <input type="email" name="ContactEmail" value="<?php echo $email ?>" id="ContactEmail" class="input-box">
                             </div>
                         </div>
                         <div class="mb-3">

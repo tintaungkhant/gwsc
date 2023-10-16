@@ -36,6 +36,7 @@ db()->query($query);
 $query = "CREATE TABLE `features` (
   `FeatureID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `FeatureName` varchar(50) DEFAULT NULL,
+  `FeatureIcon` varchar(255) NULL,
   `FeatureDescription` TEXT
 );";
 db()->query($query);

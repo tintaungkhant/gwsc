@@ -3,7 +3,7 @@ view("admin.layout.header");
 ?>
 
 <div>
-    <div class="sm:flex sm:items-center">
+    <div class="sm:flex sm:items-center mb-4">
         <div class="sm:flex-auto">
             <h1 class="text-base font-semibold leading-6 text-gray-900">Create Feature</h1>
         </div>
@@ -18,6 +18,12 @@ view("admin.layout.header");
                             <label for="FeatureName" class="block text-sm font-medium leading-6 text-gray-900">Name</label>
                             <div class="mt-2">
                                 <input type="text" name="FeatureName" id="FeatureName" class="input-box">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="FeatureIcon" class="block text-sm font-medium leading-6 text-gray-900">Icon</label>
+                            <div class="mt-2">
+                                <input type="text" name="FeatureIcon" id="FeatureIcon" class="input-box">
                             </div>
                         </div>
                         <div class="mb-3">

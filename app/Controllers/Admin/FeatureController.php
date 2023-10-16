@@ -25,6 +25,7 @@ class FeatureController
 
         $validator = validator($data, [
             "FeatureName" => ["required"],
+            "FeatureIcon" => ["required"],
             "FeatureDescription" => ["required"]
         ]);
 
@@ -58,6 +59,7 @@ class FeatureController
 
         $validator = validator($data, [
             "FeatureName" => ["required"],
+            "FeatureIcon" => ["required"],
             "FeatureDescription" => ["required"]
         ]);
 

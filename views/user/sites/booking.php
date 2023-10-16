@@ -4,7 +4,7 @@ view("user.layout.header");
 ?>
 
 <div>
-    <div class="sm:flex sm:items-center">
+    <div class="sm:flex sm:items-center mb-4">
         <div class="sm:flex-auto">
             <h1 class="text-base font-semibold leading-6 text-gray-900">Booking</h1>
         </div>
