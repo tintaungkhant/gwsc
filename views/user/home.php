@@ -20,7 +20,7 @@ view("user.layout.header");
                 </div>
                 <div class="flex justify-between items-center">
                     <h1 class="font-medium text-lg">Available Sites</h1>
-                    <a href="/sites" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Explore More</a>
+                    <a href="/sites" class="btn-default">Explore More</a>
                 </div>
                 <div class="flex flex-wrap justify-between">
                     <?php foreach ($sites as $site) : ?>
@@ -46,5 +46,5 @@ view("user.layout.header");
 </div>
 
 <?php
-view("user.layout.footer");
+view("user.layout.footer", ["show_footer_map" => true]);
 ?>

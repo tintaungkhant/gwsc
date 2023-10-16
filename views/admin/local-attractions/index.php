@@ -9,7 +9,7 @@ view("admin.layout.header");
             <h1 class="text-base font-semibold leading-6 text-gray-900">Local Attractions</h1>
         </div>
         <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-            <a href="/admin/local-attractions/create" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Create Local Attraction</a>
+            <a href="/admin/local-attractions/create" class="btn-default">Create Local Attraction</a>
         </div>
     </div>
     <div class="flow-root">
@@ -31,7 +31,7 @@ view("admin.layout.header");
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><?php echo $local_attraction["LocalAttractionName"] ?></td>
                                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                                     <a href="/admin/local-attractions/<?php echo $local_attraction["LocalAttractionID"] ?>/edit" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                    <a href="/admin/local-attractions/<?php echo $local_attraction["LocalAttractionID"] ?>/delete" class="ml-2 rounded-md bg-red-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">Delete</a>
+                                    <a href="/admin/local-attractions/<?php echo $local_attraction["LocalAttractionID"] ?>/delete" class="btn-danger">Delete</a>
                                 </td>
                             </tr>
                             <?php endforeach ?>

@@ -1,7 +1,61 @@
-responsive nav bar
-adjust css classes
-page header 
-you are here
+adjust migration
+change text and images
+figure numbers
 
-remove sr-only
-100%
+1 FINAL
+
+Introduction
+
+I developed GWSC with responsive and user-friendly web pages and added web services to have better useability. As a location web service, I added Google Maps to make it easier for users to find campsites. Admin users can easily add a Google Maps iframe to the page while creating a campsite. This makes it easy for users to find their chosen campsite. I also added GWSC's social media links to the footer so that people could find out more about the campsites and GWSC. Since many people are using social media sites, it can help GWSC reach more people.
+
+I added the weather widget from weatherwidget.org as another web service that shows the weather on the home page. This widget lets users see what the weather will be like before booking a campsite, so they don't book on days when the weather is bad. In addition, we have an RSS feed XML page that makes it easy for other websites to share our pages. Also the GWSC websites are made to be responsive and work well on mobile. Users can use it with many browsers that support CSS3. Even if the browser doesn't support CSS3, the features will still work.
+
+How HTML is Used to Develop GWSC Website
+
+HTML is the main technology that is used to build GWSC's site layouts. At the early stage of the development, I created wireframe layouts with HTML and fake content. I made sure that the appropriate HTML tags were used and added images to make the site look better and be easier to use. Since HTML by itself can't show dynamic content, I used PHP to make it possible to show dynamic content. I also used FontAwesome icons to make the website's user experience better.
+
+How CSS is Used to Standardize GWSC Website
+
+Making a web design that looks good and works well is very important. CSS is essential for applying the design of a web page. HTML elements have some design attributes, but they are not useful or best practice. So I use CSS to set the colors for GWSC theme, the styles for text boxes, the designs for menu bars, and more.
+
+In the development of GWSC, I used Tailwind CSS to keep my CSS code well-organized. Because Tailwind CSS is a utility-first CSS tool, I had to combine utility classes like "text-sm" and "bg-white" to make components. This method made it easier to maintain the CSS code and reduce the time needed to think of class names for each component.
+
+Utilization of Web Services in GWSC Website and How it Meets Objectives
+
+According to the scenario's objectives, I developed GWSC using the following methods:
+
+Location Map: Adding Google Maps makes the user experience much more convenient. Admins can easily add Google Maps to the page for creating a campsite by using an iframe that can be embedded. With this feature, users can quickly find the campsite they want, which cuts down on any confusion and makes the planning process better overall.
+
+Weather widget: The weather widget from weatherwidget.org is another important part. Users can see up-to-date weather information on the webpage, which helps them choose a campsite. This keeps people from booking on days with bad weather by accident, which makes camping more fun.
+
+RSS feed: The RSS feed XML page lets other websites share information. This feature helps the website reach and engages with more people online. By posting web page links on different websites, GWSC can get new customers and become known as a reliable source for people who like camping and wild swimming.
+
+Responsive Design:  I made sure that GWSC's web pages were responsive and mobile-friendly so that people could use them on phones, laptops, and other devices. For a wide range of users, responsive web pages makes the website easier to view and use for everyone.
+
+Compatibility with Multiple Browsers: GWSC works with many browsers, even ones that don't support CSS3. This shows that the website is designed to be available to everyone. Even if CSS3 support isn't present, the core functions still work, so users don't have to deal with too much trouble.
+
+In conclusion, I developed the GWSC website meeting the goals by the given scenario. Since GWSC provides easy access, cross-browser compatibility, and a responsive design, users can easily explore the website. With the help of web services like Google Maps and the weather widget, users can make smart choices. So thus, GWSC can be valuable resource for people who like to camping and wild swimming.
+
+The addition of social media links also helps GWSC reach more people and get them involved, since users can quickly connect with the organization on different platforms. By using a variety of functionalities I mentioned above, GWSC is able to meet the goals outlined in the scenario and give people an enjoyable and useful online experience.
+
+xxxx
+
+I made sure that the appropriate HTML tags were used and added images to make the site look better and be easier to use. Since HTML by itself can't show dynamic content, I used PHP to make it possible to show dynamic content. I also used FontAwesome icons to make the website's user experience better.
+
+Because Tailwind CSS is a utility-first CSS tool, I had to combine utility classes like "text-sm" and "bg-white" to make components. This method made it easier to maintain the CSS code and reduce the time needed to think of class names for each component.
+
+With this feature, users can quickly find the campsite they want, which cuts down on any confusion and makes the planning process better overall. Weather widget: The weather widget from weatherwidget.org is another important part. Users can see up-to-date weather information on the webpage, which helps them choose a campsite. This keeps people from booking on days with bad weather by accident, which makes camping more fun. RSS feed: The RSS feed XML page lets other websites share information. This feature helps the website reach and engages with more people online. By posting web page links on different websites, GWSC can get new customers and become known as a reliable source for people who like camping and wild swimming. Responsive Design: I made sure that GWSC's web pages were responsive and mobile-friendly so that people could use them on phones, laptops, and other devices. For a wide range of users, responsive web pages makes the website easier to view and use for everyone. Compatibility with Multiple Browsers: GWSC works with many browsers, even ones that don't support CSS3.
+
+This shows that the website is designed to be available to everyone. Even if CSS3 support isn't present, the core functions still work, so users don't have to deal with too much trouble. In conclusion, I developed the GWSC website meeting the goals by the given scenario. Since GWSC provides easy access, cross-browser compatibility, and a responsive design, users can easily explore the website.
+
+xxxx
+
+2 FINAL
+
+When I first started developing the GWSC, I created HTML layout with static fake content. Then I added some css for better looking. Even though adding CSS made it look better, I ran into problems with class names that were being duplicated and complex, repeated CSS code. To solve this, I used Tailwind CSS. So my CSS code more organized and simple.
+
+After creating web pages with HTML and CSS, I needed to add dynamic content. So I used PHP as backend language and MySQL to store data. At first, my PHP code worked, but it got more complicated and repeated over time. To fix this, I switched to the MVC structure and used object-oriented programming (OOP). This made the code less repetitive and more consistent. A little while, I did have some trouble with route and URI matching. But I was able to fix the problems with the help of online tutorials about regex.
+
+Once the website's functions were working, I needed to create appropriate content. I got the pictures from Google Images and the writing from Creative Commons and Wikipedia. After creating the content, I tested it thoroughly to find and fix any bugs.
+
+Finally, I developed GWSC website by using HTML, CSS, Tailwind CSS, PHP, and MySQL. Looking ahead, I want to learn more about OOP concepts and get better at understanding the MVC pattern. I also want to learn more about the Laravel framework in PHP, get better at using UI/UX tools like Figma, and version control systems like Git and GitHub. With these skills, I'll be better prepared for similar task in the future.

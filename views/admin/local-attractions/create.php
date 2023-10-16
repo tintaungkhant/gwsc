@@ -17,23 +17,23 @@ view("admin.layout.header");
                         <div class="mb-3">
                             <label for="LocalAttractionName" class="block text-sm font-medium leading-6 text-gray-900">Name</label>
                             <div class="mt-2">
-                                <input type="text" name="LocalAttractionName" id="LocalAttractionName" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                <input type="text" name="LocalAttractionName" id="LocalAttractionName" class="input-box">
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="LocalAttractionImage" class="block text-sm font-medium leading-6 text-gray-900">Image</label>
                             <div class="mt-2">
-                                <input type="file" name="LocalAttractionImage" id="LocalAttractionImage" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                <input type="file" name="LocalAttractionImage" id="LocalAttractionImage" class="input-box">
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="LocalAttractionDescription" class="block text-sm font-medium leading-6 text-gray-900">Description</label>
                             <div class="mt-2">
-                                <textarea rows="4" name="LocalAttractionDescription" id="LocalAttractionDescription" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+                                <textarea rows="4" name="LocalAttractionDescription" id="LocalAttractionDescription" class="input-box"></textarea>
                             </div>
                         </div>
                         <div class="mb-3">
-                            <button class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Create Local Attraction</button>
+                            <button class="btn-default">Create Local Attraction</button>
                         </div>
                     </form>
                 </div>

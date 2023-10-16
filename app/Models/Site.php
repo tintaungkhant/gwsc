@@ -79,20 +79,41 @@ class Site extends Model
     public function getAllTopViewedAvailableSites($pitch_type = "", $keyword = "")
     {
         $query  = "SELECT DISTINCT
+        available_sites.AvailableSiteID,
         sites.SiteID,
         sites.SiteName,
         sites.SiteDescription,
         sites.SiteImage,
-        sites.SiteViewCount
+        sites.SiteViewCount,
+        available_sites.Slot,
+        available_sites.Fee
     FROM
-        sites    
-    ORDER BY sites.SiteViewCount LIMIT 3";
+        sites
+    INNER JOIN
+        available_sites ON sites.SiteID = available_sites.SiteID
+    INNER JOIN
+        pitch_types ON available_sites.PitchTypeID = pitch_types.PitchTypeID
+    WHERE
+        available_sites.Slot > 0 ";
+
+        if ($pitch_type) {
+            $query .= "AND pitch_types.PitchTypeID = $pitch_type ";
+        }
+
+        if ($keyword) {
+            $query .= "AND sites.SiteName LIKE '%$keyword%' ";
+        }
+
+        $query .= "ORDER BY available_sites.Slot DESC";
 
         $sites = db()->query($query)->get();
 
         $unique_sites = [];
 
         foreach ($sites as $site) {
+            if(count($unique_sites) >= 3){
+                break;
+            }
             if (!isset($unique_sites[$site["SiteID"]])) {
                 $unique_sites[$site["SiteID"]] = $site;
             }

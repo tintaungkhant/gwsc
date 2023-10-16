@@ -32,7 +32,7 @@ view("user.layout.header");
                                     <?php if (authUser()) { ?>
                                         <button class="block rounded-md bg-indigo-500 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Book Now</button>
                                     <?php } else { ?>
-                                        <a href="/login" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Login To Book</a>
+                                        <a href="/login" class="btn-default">Login To Book</a>
                                     <?php } ?>
                                 </div>
                             </form>
@@ -40,7 +40,7 @@ view("user.layout.header");
                         <div class="mt-6">
                             <h4 class="text-md font-medium text-gray-900 mb-2">Features</h4>
                             <?php foreach ($site["features"] as $feature) : ?>
-                                <a href="/features" class="bg-indigo-100 text-black text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg border border-indigo-400"><?php echo $feature["FeatureName"] ?></a>
+                                <a href="/features" class="mb-2 inline-block bg-indigo-100 text-black text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg border border-indigo-400 whitespace-nowrap"><?php echo $feature["FeatureName"] ?></a>
                             <?php endforeach ?>
                         </div>
                         <div class="mt-6">
@@ -89,10 +89,10 @@ view("user.layout.header");
                                     <input type="hidden" value="<?php echo $site["SiteID"] ?>" name="SiteID">
                                     <input type="hidden" value="<?php echo authUser()["UserID"] ?>" name="UserID">
                                     <div class="mb-3">
-                                        <textarea rows="4" name="ReviewComment" id="ReviewComment" placeholder="What's on your mind?" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+                                        <textarea rows="4" name="ReviewComment" id="ReviewComment" placeholder="What's on your mind?" class="input-box"></textarea>
                                     </div>
                                     <div>
-                                        <button class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Submit</button>
+                                        <button class="btn-default">Submit</button>
                                     </div>
                                 </form>
                             <?php endif ?>

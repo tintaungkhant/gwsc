@@ -11,16 +11,16 @@ view("user.layout.header");
                     <div class="mb-3">
                         <div class="relative mt-2 rounded-md shadow-sm">
                             <div class="absolute inset-y-0 left-0 flex items-center">
-                                <select id="PitchTypeID" name="PitchTypeID" class="h-full rounded-md border-0 bg-transparent py-0 pl-3 pr-7 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
+                                <select id="PitchTypeID" name="PitchTypeID" class="combined-select-box">
                                     <?php foreach ($pitch_types as $pitch_type) : ?>
                                         <option value="<?php echo $pitch_type["PitchTypeID"] ?>" <?php echo $pitch_type["PitchTypeID"] == $pitch_type_id ?  "selected" : "" ?>><?php echo $pitch_type["PitchTypeName"] ?></option>
                                     <?php endforeach ?>
                                 </select>
                             </div>
-                            <input type="text" name="SiteName" id="SiteName" value="<?php echo $site_name ?>" class="block w-full rounded-md border-0 py-1.5 pl-40 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Campsite name">
+                            <input type="text" name="SiteName" id="SiteName" value="<?php echo $site_name ?>" class="combined-input-box" placeholder="Campsite name">
                         </div>
                     </div>
-                    <button class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Search</button>
+                    <button class="btn-default">Search</button>
                 </form>
                 <div class="flex flex-wrap justify-between">
                     <?php foreach ($sites as $site) : ?>

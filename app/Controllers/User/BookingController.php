@@ -37,7 +37,7 @@ class BookingController
         if (!$validator->validate()) {
             setErrorMessages($validator->getErrors());
 
-            return redirect("/sites/".$routeParams["site_id"]."/book");
+            return redirect("/sites/".$routeParams["site_id"]."/book?PitchTypeID=".request()->get("BookingPitchTypeID"));
         }
 
         $booking = new Booking;
