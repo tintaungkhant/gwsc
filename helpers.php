@@ -76,6 +76,7 @@ function view($key, $data = [])
 
 function redirect($route)
 {
+    $route = route($route);
     header("Location:$route");
     die;
 }
