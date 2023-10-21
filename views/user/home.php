@@ -11,7 +11,7 @@ view("user.layout.header");
                 <div class="slider">
                     <?php foreach ($top_sites as $top_site) : ?>
                         <div>
-                            <a href="/sites/<?php echo $top_site["SiteID"] ?>" class="flex flex-col p-8 rounded hover:shadow hover:bg-gray-50 w-full">
+                            <a href="<?php echo route("sites/" . $top_site["SiteID"]) ?>" class="flex flex-col p-8 rounded hover:shadow hover:bg-gray-50 w-full">
                                 <img class="mx-auto w-full h-72 object-cover object-center flex-shrink-0 rounded" src="<?php echo publicPath($top_site["SiteImage"]) ?>" alt="">
                                 <h3 class="mt-6 text-lg text-center font-medium text-gray-900"><?php echo $top_site["SiteName"] ?></h3>
                             </a>
@@ -24,21 +24,21 @@ view("user.layout.header");
                         <h2 class="text-lg font-medium">11 Camps</h2>
                     </div>
                     <div class="text-center p-6 rounded bg-teal-50">
-                    <i class="fa-solid fa-users text-4xl text-gray-500 mb-3"></i>
+                        <i class="fa-solid fa-users text-4xl text-gray-500 mb-3"></i>
                         <h2 class="text-lg font-medium">11 Users</h2>
                     </div>
                     <div class="text-center p-6 rounded bg-teal-50">
-                    <i class="fa-solid fa-message text-4xl text-gray-500 mb-3"></i>
+                        <i class="fa-solid fa-message text-4xl text-gray-500 mb-3"></i>
                         <h2 class="text-lg font-medium">11 Bookings</h2>
                     </div>
                 </div>
                 <div class="flex justify-between items-center">
                     <h1 class="font-medium text-lg">Available Sites</h1>
-                    <a href="/sites" class="btn-default">Explore More</a>
+                    <a href="<?php echo route("sites") ?>" class="btn-default">Explore More</a>
                 </div>
                 <div class="flex flex-wrap justify-between">
                     <?php foreach ($sites as $site) : ?>
-                        <a href="<?php echo route("sites/".$site["SiteID"]) ?>" class="flex flex-col p-8 rounded hover:shadow hover:bg-gray-50 w-full md:w-1/2">
+                        <a href="<?php echo route("sites/" . $site["SiteID"]) ?>" class="flex flex-col p-8 rounded hover:shadow hover:bg-gray-50 w-full md:w-1/2">
                             <img class="mx-auto w-full h-48 object-cover flex-shrink-0 rounded" src="<?php echo publicPath($site["SiteImage"]) ?>" alt="">
                             <h3 class="mt-6 text-sm font-medium text-gray-900"><?php echo $site["SiteName"] ?></h3>
                             <div class="flex items-center">

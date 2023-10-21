@@ -32,8 +32,8 @@ view("admin.layout.header");
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><?php echo $feature["FeatureName"] ?></td>
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><?php echo $feature["FeatureIcon"] ?></td>
                                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                    <a href="/admin/features/<?php echo $feature["FeatureID"] ?>/edit" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                    <a href="/admin/features/<?php echo $feature["FeatureID"] ?>/delete" class="btn-danger">Delete</a>
+                                    <a href="<?php echo route("admin/features/".$feature["FeatureID"]."/edit") ?>" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                    <a href="<?php echo route("admin/features/".$feature["FeatureID"]."/delete") ?>" class="btn-danger">Delete</a>
                                 </td>
                             </tr>
                             <?php endforeach ?>

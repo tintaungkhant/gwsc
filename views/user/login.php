@@ -17,13 +17,13 @@ view("user.layout.header");
                         <div class="mb-3">
                             <label for="UserEmail" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
                             <div class="mt-2">
-                                <input type="email" name="UserEmail" id="UserEmail" class="input-box">
+                                <input type="email" name="UserEmail" id="UserEmail" class="input-box" value="jeffreysarnold@teleworm.us">
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="UserPassword" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
                             <div class="mt-2">
-                                <input type="password" name="UserPassword" id="UserPassword" class="input-box">
+                                <input type="password" name="UserPassword" id="UserPassword" class="input-box" value="password">
                             </div>
                         </div>
                         <div class="mb-3">

@@ -30,8 +30,8 @@ view("admin.layout.header");
                                 <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"><?php echo $local_attraction["LocalAttractionID"] ?></td>
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><?php echo $local_attraction["LocalAttractionName"] ?></td>
                                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                    <a href="/admin/local-attractions/<?php echo $local_attraction["LocalAttractionID"] ?>/edit" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                    <a href="/admin/local-attractions/<?php echo $local_attraction["LocalAttractionID"] ?>/delete" class="btn-danger">Delete</a>
+                                    <a href="<?php echo route("admin/local-attractions/".$local_attraction["LocalAttractionID"]."/edit") ?>" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                    <a href="<?php echo route("admin/local-attractions/".$local_attraction["LocalAttractionID"]."/delete") ?>" class="btn-danger">Delete</a>
                                 </td>
                             </tr>
                             <?php endforeach ?>

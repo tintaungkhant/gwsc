@@ -31,8 +31,8 @@ view("admin.layout.header");
                                     <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"><?php echo $site["SiteID"] ?></td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><?php echo $site["SiteName"] ?></td>
                                     <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                        <a href="/admin/sites/<?php echo $site["SiteID"] ?>/edit" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                        <a href="/admin/sites/<?php echo $site["SiteID"] ?>/delete" class="btn-danger">Delete</a>
+                                        <a href="<?php echo route("admin/sites/" . $site["SiteID"] . "/edit") ?>" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                        <a href="<?php echo route("admin/sites/" . $site["SiteID"] . "/delete") ?>" class="btn-danger">Delete</a>
                                     </td>
                                 </tr>
                             <?php endforeach ?>

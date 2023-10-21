@@ -6,7 +6,7 @@
 </head>
 <header class="bg-white">
     <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
-        <a href="/admin" class="-m-1.5 p-1.5 flex items-center">
+        <a href="<?php echo route("admin") ?>" class="-m-1.5 p-1.5 flex items-center">
             <img class="h-8 w-auto" src="<?php echo publicPath("/images/logo.png") ?>" alt="">
             <h1 class="font-medium text-lg">GWSC</h1>
         </a>
@@ -19,15 +19,15 @@
         </div>
         <div class="hidden lg:flex lg:gap-x-12">
             <?php if (authAdmin()) : ?>
-                <a href="/admin/admins" class="text-sm font-semibold leading-6 text-gray-900">Admins</a>
-                <a href="/admin/sites" class="text-sm font-semibold leading-6 text-gray-900">Sites</a>
-                <a href="/admin/available-sites" class="text-sm font-semibold leading-6 text-gray-900">Available Sites</a>
-                <a href="/admin/pitch-types" class="text-sm font-semibold leading-6 text-gray-900">Pitch Type</a>
-                <a href="/admin/features" class="text-sm font-semibold leading-6 text-gray-900">Features</a>
-                <a href="/admin/local-attractions" class="text-sm font-semibold leading-6 text-gray-900">Local Attractions</a>
-                <a href="/admin/logout" class="text-sm font-semibold leading-6 text-gray-900">Logout</a>
+                <a href="<?php echo route("admin/admins") ?>" class="text-sm font-semibold leading-6 text-gray-900">Admins</a>
+                <a href="<?php echo route("admin/sites") ?>" class="text-sm font-semibold leading-6 text-gray-900">Sites</a>
+                <a href="<?php echo route("admin/available-sites") ?>" class="text-sm font-semibold leading-6 text-gray-900">Available Sites</a>
+                <a href="<?php echo route("admin/pitch-types") ?>" class="text-sm font-semibold leading-6 text-gray-900">Pitch Type</a>
+                <a href="<?php echo route("admin/features") ?>" class="text-sm font-semibold leading-6 text-gray-900">Features</a>
+                <a href="<?php echo route("admin/local-attractions") ?>" class="text-sm font-semibold leading-6 text-gray-900">Local Attractions</a>
+                <a href="<?php echo route("admin/logout") ?>" class="text-sm font-semibold leading-6 text-gray-900">Logout</a>
             <?php else : ?>
-                <a href="/admin/login" class="text-sm font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
+                <a href="<?php echo route("admin/login") ?>" class="text-sm font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
             <?php endif ?>
         </div>
     </nav>
@@ -50,16 +50,17 @@
             <div class="mt-6 flow-root">
                 <div class="-my-6 divide-y divide-gray-500/10">
                     <?php if (authAdmin()) : ?>
-                        <a href="/admin/admins" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Admins</a>
-                        <a href="/admin/sites" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Sites</a>
-                        <a href="/admin/available-sites" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Available Sites</a>
-                        <a href="/admin/pitch-types" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Pitch Type</a>
-                        <a href="/admin/features" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Features</a>
-                        <a href="/admin/local-attractions" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Local Attractions</a>
-                        <a href="/admin/logout" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Logout</a>
+                        <a href="<?php echo route("admin/admins") ?>" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Admins</a>
+                        <a href="<?php echo route("admin/sites") ?>" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Sites</a>
+                        <a href="<?php echo route("admin/available-sites") ?>" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Available Sites</a>
+                        <a href="<?php echo route("admin/pitch-types") ?>" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Pitch Type</a>
+                        <a href="<?php echo route("admin/features") ?>" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Features</a>
+                        <a href="<?php echo route("admin/local-attractions") ?>" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Local Attractions</a>
+                        <a href="<?php echo route("admin/logout") ?>" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Logout</a>
+
                     <?php else : ?>
                         <div class="py-6">
-                            <a href="/admin/login" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log in <span aria-hidden="true">&rarr;</span></a>
+                            <a href="<?php echo route("admin/login") ?>" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log in <span aria-hidden="true">&rarr;</span></a>
                         </div>
                     <?php endif ?>
                 </div>

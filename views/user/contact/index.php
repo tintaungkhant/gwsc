@@ -58,7 +58,7 @@ view("user.layout.header");
                                         <input id="Agreed" value="1" name="Agreed" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600">
                                     </div>
                                     <div class="ml-3 text-sm leading-6">
-                                        <label for="Agreed" class="font-medium text-gray-900">By selecting this, you agree to our <a href="/privacy-policy" class="font-semibold text-indigo-600">privacy policy</a>.</label>
+                                        <label for="Agreed" class="font-medium text-gray-900">By selecting this, you agree to our <a href="<?php route("privacy-policy") ?>" class="font-semibold text-indigo-600">privacy policy</a>.</label>
                                     </div>
                                 </div>
                             </div>
@@ -68,7 +68,7 @@ view("user.layout.header");
                         </div>
                     </form>
                 <?php } else { ?>
-                    <a href="/login" class="mt-3 btn-default">Login to contact us</a>
+                    <a href="<?php echo route("login") ?>" class="mt-3 btn-default">Login to contact us</a>
                 <?php } ?>
             </div>
         </div>

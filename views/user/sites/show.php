@@ -32,7 +32,7 @@ view("user.layout.header");
                                     <?php if (authUser()) { ?>
                                         <button class="block rounded-md bg-indigo-500 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Book Now</button>
                                     <?php } else { ?>
-                                        <a href="/login" class="btn-default">Login To Book</a>
+                                        <a href="<?php echo route("login") ?>" class="btn-default">Login To Book</a>
                                     <?php } ?>
                                 </div>
                             </form>
@@ -40,7 +40,7 @@ view("user.layout.header");
                         <div class="mt-6">
                             <h4 class="text-md font-medium text-gray-900 mb-2">Features</h4>
                             <?php foreach ($site["features"] as $feature) : ?>
-                                <a href="/features" class="mb-2 inline-block bg-indigo-100 text-black text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg border border-indigo-400 whitespace-nowrap"><?php echo $feature["FeatureIcon"] ?> <?php echo $feature["FeatureName"] ?></a>
+                                <a href="<?php echo route("features") ?>" class="mb-2 inline-block bg-indigo-100 text-black text-sm font-medium mr-2 px-2.5 py-0.5 rounded-lg border border-indigo-400 whitespace-nowrap"><?php echo $feature["FeatureIcon"] ?> <?php echo $feature["FeatureName"] ?></a>
                             <?php endforeach ?>
                         </div>
                         <div class="mt-6">
@@ -51,8 +51,8 @@ view("user.layout.header");
                             <h4 class="text-md font-medium text-gray-900 mb-2">Local Attractions</h4>
                             <div class="flex flex-wrap justify-between">
                                 <?php foreach ($site["local_attractions"] as $local_attraction) : ?>
-                                    <a href="/local-attractions/<?php echo $local_attraction["LocalAttractionID"] ?>" class="flex flex-col p-8 rounded hover:shadow hover:bg-gray-50 w-full md:w-1/2">
-                                        <img class="mx-auto w-full h-48 object-cover flex-shrink-0 rounded" src="/<?php echo $local_attraction["LocalAttractionImage"] ?>" alt="">
+                                    <a href="<?php echo route("local-attractions/" . $local_attraction["LocalAttractionID"]) ?>" class="flex flex-col p-8 rounded hover:shadow hover:bg-gray-50 w-full md:w-1/2">
+                                        <img class="mx-auto w-full h-48 object-cover flex-shrink-0 rounded" src="<?php echo publicPath($local_attraction["LocalAttractionImage"]) ?>" alt="">
                                         <h3 class="mt-6 text-sm font-medium text-gray-900"><?php echo $local_attraction["LocalAttractionName"] ?></h3>
                                         <div class="mt-1 flex flex-grow flex-col justify-between">
                                             <p class="text-sm text-gray-500">

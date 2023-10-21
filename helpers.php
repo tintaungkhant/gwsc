@@ -82,12 +82,12 @@ function redirect($route)
 
 function publicPath($path)
 {
-    return ROUTE_PREFIX."/public/" . $path;
+    return PUBLIC_PATH_PREFIX."/public/" . $path;
 }
 
 function route($path){
     $path = trim($path, "/");
-    return ROUTE_PREFIX ."/". $path;
+    return PUBLIC_PATH_PREFIX ."/". $path;
 }
 
 function request()

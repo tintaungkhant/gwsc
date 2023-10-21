@@ -80,7 +80,7 @@ view("user.layout.header");
                         <p><?php echo $booking["BookingNote"] ?></p>
                     </div>
                     <div class="mb-3">
-                        <a href="/sites" class="btn-default">Explore More</a>
+                        <a href="<?php echo route("sites") ?>" class="btn-default">Explore More</a>
                     </div>
                 </div>
             </div>

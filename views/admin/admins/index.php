@@ -9,7 +9,7 @@ view("admin.layout.header");
             <h1 class="text-base font-semibold leading-6 text-gray-900">Admins</h1>
         </div>
         <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-            <a href="/admin/admins/create" class="btn-default">Create admin</a>
+            <a href="<?php echo route("admin/admins/create") ?>" class="btn-default">Create admin</a>
         </div>
     </div>
     <div class="flow-root">
@@ -32,8 +32,8 @@ view("admin.layout.header");
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><?php echo $admin["AdminUsername"] ?></td>
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><?php echo $admin["AdminRole"] ?></td>
                                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                    <a href="/admin/admins/<?php echo $admin["AdminID"] ?>/edit" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                    <a href="/admin/admins/<?php echo $admin["AdminID"] ?>/delete" class="btn-danger">Delete</a>
+                                    <a href="<?php echo route("admin/admins/".$admin["AdminID"]) ?>/edit" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                    <a href="<?php echo route("admin/admins/".$admin["AdminID"]) ?>/delete" class="btn-danger">Delete</a>
                                 </td>
                             </tr>
                             <?php endforeach ?>

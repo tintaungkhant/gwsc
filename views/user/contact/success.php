@@ -15,7 +15,7 @@ view("user.layout.header");
         </div>
     </div>
     <div class="mt-3">
-        <a href="/sites" class="btn-default">Explore Sites</a>
+        <a href="<?php echo route("sites") ?>" class="btn-default">Explore Sites</a>
     </div>
 </div>
 

@@ -17,13 +17,13 @@ view("admin.layout.header");
                         <div class="mb-3">
                             <label for="AdminUserName" class="block text-sm font-medium leading-6 text-gray-900">Username</label>
                             <div class="mt-2">
-                                <input type="text" name="AdminUserName" id="AdminUserName" class="input-box">
+                                <input type="text" name="AdminUserName" id="AdminUserName" class="input-box" value="admin">
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="AdminPassword" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
                             <div class="mt-2">
-                                <input type="password" name="AdminPassword" id="AdminPassword" class="input-box">
+                                <input type="password" name="AdminPassword" id="AdminPassword" class="input-box" value="password">
                             </div>
                         </div>
                         <div class="mb-3">

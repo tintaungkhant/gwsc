@@ -57,7 +57,7 @@ view("user.layout.header");
                     $email = "";
                 }
                 ?>
-                <form action="/sites/<?php echo $site["SiteID"] ?>/post-book" method="POST">
+                <form action="<?php echo route("/sites/" . $site["SiteID"] . "/post-book") ?>" method="POST">
                     <input type="hidden" name="BookingSiteID" value="<?php echo $site["SiteID"] ?>">
                     <input type="hidden" name="BookingPitchTypeID" value="<?php echo $pitch_type["PitchTypeID"] ?>">
                     <div class="mb-3">

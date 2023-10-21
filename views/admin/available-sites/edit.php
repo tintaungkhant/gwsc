@@ -13,7 +13,7 @@ view("admin.layout.header");
         <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                 <div class="overflow-hidden p-4 shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
-                    <form action="/admin/available-sites/<?php echo $available_site["AvailableSiteID"] ?>/update" method="POST">
+                    <form action="<?php echo route("/admin/available-sites/" . $available_site["AvailableSiteID"] . "/update") ?>" method="POST">
                         <div class="mb-3">
                             <label for="SiteID" class="block text-sm font-medium leading-6 text-gray-900">Site</label>
                             <div class="mt-2">

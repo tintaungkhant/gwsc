@@ -1,6 +1,7 @@
 <?php
 
 require_once "autoload.php";
+require_once "helpers.php";
 
 session_start();
 
@@ -10,9 +11,9 @@ $uri = $_SERVER['REQUEST_URI'];
 
 $uri = rtrim($uri, '/');
 
-$uriSegments = explode("/", ltrim($uri, "/"));
+$uriSegments = $uri ? explode("/", ltrim($uri, "/")) : [];
 
-$routePrefix = "";
+$publicPathPrefix = "";
 
 $baseDir = __DIR__;
 
@@ -20,12 +21,12 @@ $separator = strpos($baseDir, "\\") ? "\\" : "/";
 
 $baseDirSegments = explode($separator, $baseDir);
 
-foreach(array_reverse($baseDirSegments) as $baseDirSegment){
-    foreach($uriSegments as $key => $uriSegment){
-        if($uriSegment === $baseDirSegment){
-            $routePrefix .= "/".$uriSegments[$key];
+foreach (array_reverse($baseDirSegments) as $baseDirSegment) {
+    foreach ($uriSegments as $key => $uriSegment) {
+        if ($uriSegment === $baseDirSegment) {
+            $publicPathPrefix .= "/" . $uriSegments[$key];
             unset($uriSegments[$key]);
-        }else{
+        } else {
             break;
         }
     }
@@ -34,16 +35,12 @@ foreach(array_reverse($baseDirSegments) as $baseDirSegment){
 $uri = implode("/", $uriSegments);
 
 $uri = rtrim($uri, '/');
-$routePrefix = ltrim($routePrefix, "/");
 
-define("ROUTE_PREFIX", $routePrefix);
-define("URI", $uri);
+define("PUBLIC_PATH_PREFIX", $publicPathPrefix);
 
 $routePrams = [];
 
-require_once "helpers.php";
-
-$uri = strlen($uri) == 0 ? "" : "/".$uri;
+$uri = strlen($uri) == 0 ? "" : "/" . $uri;
 
 matchRoute($routes, $uri, $routePrams);
 
@@ -71,7 +68,7 @@ function matchRoute($routes, $uri, &$routePrams)
     foreach ($routes as $route_name => $route) {
         if (checkIfMatch($route_name, $uri, $routePrams)) {
             $middleware = $route["middleware"];
-            if($middleware){
+            if ($middleware) {
                 (new $route["middleware"])->handle();
             }
 
@@ -99,7 +96,7 @@ function checkIfMatch($route_name, $uri, &$routePrams)
     $trimedUri = strstr($uri, '?', true);
 
     $uri = $trimedUri ? $trimedUri : $uri;
-    
+
     $uri = explode("/", $uri);
 
     $match = true;
@@ -118,7 +115,7 @@ function checkIfMatch($route_name, $uri, &$routePrams)
         $match = false;
     }
 
-    if($match){
+    if ($match) {
         $routePrams = array_merge($queryParams, $routePrams);
     }
 
@@ -132,7 +129,8 @@ function extractSegmentWord($segment)
     return $matches[1];
 }
 
-function getParamArray($uri){
+function getParamArray($uri)
+{
     $params = [];
 
     $pos = strpos($uri, '?');
@@ -143,14 +141,14 @@ function getParamArray($uri){
         $queryString = substr($uri, $pos + 1);
     }
 
-    if($queryString){
+    if ($queryString) {
         $queryParts = explode('&', $queryString);
 
         foreach ($queryParts as $part) {
             list($key, $value) = explode('=', $part);
             $params[$key] = urldecode($value);
         }
-    }    
-    
+    }
+
     return $params;
 }
