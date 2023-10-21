@@ -9,7 +9,7 @@ view("admin.layout.header");
             <h1 class="text-base font-semibold leading-6 text-gray-900">Sites</h1>
         </div>
         <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-            <a href="/admin/sites/create" class="btn-default">Create Site</a>
+            <a href="<?php echo route("admin/sites/create") ?>" class="btn-default">Create Site</a>
         </div>
     </div>
     <div class="flow-root">

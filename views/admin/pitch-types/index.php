@@ -9,7 +9,7 @@ view("admin.layout.header");
             <h1 class="text-base font-semibold leading-6 text-gray-900">Pitch Types</h1>
         </div>
         <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-            <a href="/admin/pitch-types/create" class="btn-default">Create Pitch Type</a>
+            <a href="<?php echo route("admin/pitch-types/create") ?>" class="btn-default">Create Pitch Type</a>
         </div>
     </div>
     <div class="flow-root">
@@ -25,15 +25,15 @@ view("admin.layout.header");
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200 bg-white">
-                            <?php foreach($pitch_types as $pitch_type):?>
-                            <tr>
-                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"><?php echo $pitch_type["PitchTypeID"] ?></td>
-                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><?php echo $pitch_type["PitchTypeName"] ?></td>
-                                <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                    <a href="<?php echo route("admin/pitch-types/".$pitch_type["PitchTypeID"]."/edit") ?>" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                    <a href="<?php echo route("admin/pitch-types/".$pitch_type["PitchTypeID"]."/delete") ?>" class="btn-danger">Delete</a>
-                                </td>
-                            </tr>
+                            <?php foreach ($pitch_types as $pitch_type) : ?>
+                                <tr>
+                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"><?php echo $pitch_type["PitchTypeID"] ?></td>
+                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><?php echo $pitch_type["PitchTypeName"] ?></td>
+                                    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                                        <a href="<?php echo route("admin/pitch-types/" . $pitch_type["PitchTypeID"] . "/edit") ?>" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                        <a href="<?php echo route("admin/pitch-types/" . $pitch_type["PitchTypeID"] . "/delete") ?>" class="btn-danger">Delete</a>
+                                    </td>
+                                </tr>
                             <?php endforeach ?>
                         </tbody>
                     </table>

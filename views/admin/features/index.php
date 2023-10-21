@@ -9,7 +9,7 @@ view("admin.layout.header");
             <h1 class="text-base font-semibold leading-6 text-gray-900">Features</h1>
         </div>
         <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-            <a href="/admin/features/create" class="btn-default">Create Feature</a>
+            <a href="<?php echo route("admin/features/create") ?>" class="btn-default">Create Feature</a>
         </div>
     </div>
     <div class="flow-root">

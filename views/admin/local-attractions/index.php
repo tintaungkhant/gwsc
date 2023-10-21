@@ -9,7 +9,7 @@ view("admin.layout.header");
             <h1 class="text-base font-semibold leading-6 text-gray-900">Local Attractions</h1>
         </div>
         <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-            <a href="/admin/local-attractions/create" class="btn-default">Create Local Attraction</a>
+            <a href="<?php echo route("admin/local-attractions/create") ?>" class="btn-default">Create Local Attraction</a>
         </div>
     </div>
     <div class="flow-root">
