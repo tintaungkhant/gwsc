@@ -13,7 +13,7 @@ view("user.layout.header");
         <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                 <div class="overflow-hidden p-4 shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
-                    <form action="/post-register" method="POST">
+                    <form action="<?php echo route("post-register") ?>" method="POST">
                         <div class="mb-3">
                             <label for="UserFirstName" class="block text-sm font-medium leading-6 text-gray-900">First Name</label>
                             <div class="mt-2">
