@@ -1,6 +1,15 @@
 <html>
 
 <head>
+    <title>GWSC - Global Wild Swimming and Camping</title>
+
+    <meta name="description" content="Explore the beauty of wild swimming and camping with GWSC. Discover breathtaking destinations and unforgettable adventures.">
+    <meta name="keywords" content="wild swimming, camping, outdoor adventures, eco-friendly, nature enthusiasts">
+    <meta name="author" content="Tint Aung Khant">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="canonical" href="https://www.gwsc.com">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="<?php echo publicPath("css/slick-theme.css") ?>">
     <link rel="stylesheet" href="<?php echo publicPath("css/slick.css") ?>">
