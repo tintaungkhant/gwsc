@@ -39,6 +39,8 @@ class LocalAttractionController
 
         move_uploaded_file($data["LocalAttractionImage"]["tmp_name"], $upload_file_path);
 
+        $upload_file_path = str_replace("public/", "", $upload_file_path);
+
         $data["LocalAttractionImage"] = $upload_file_path;
 
         $site = new LocalAttraction;
@@ -80,6 +82,8 @@ class LocalAttractionController
             $upload_file_path = uploadFilePath(getFileExt($data["LocalAttractionImage"]["name"]));
 
             move_uploaded_file($data["LocalAttractionImage"]["tmp_name"], $upload_file_path);
+
+            $upload_file_path = str_replace("public/", "", $upload_file_path);
     
             $data["LocalAttractionImage"] = $upload_file_path;
         }else{

@@ -1,21 +1,53 @@
 <?php
 
 require_once "autoload.php";
-require_once "helpers.php";
 
 session_start();
 
-$routes = reigsterRoutes();
+$routes = registerRoutes();
 
 $uri = $_SERVER['REQUEST_URI'];
 
 $uri = rtrim($uri, '/');
 
+$uriSegments = explode("/", ltrim($uri, "/"));
+
+$routePrefix = "";
+
+$baseDir = __DIR__;
+
+$separator = strpos($baseDir, "\\") ? "\\" : "/";
+
+$baseDirSegments = explode($separator, $baseDir);
+
+foreach(array_reverse($baseDirSegments) as $baseDirSegment){
+    foreach($uriSegments as $key => $uriSegment){
+        if($uriSegment === $baseDirSegment){
+            $routePrefix .= "/".$uriSegments[$key];
+            unset($uriSegments[$key]);
+        }else{
+            break;
+        }
+    }
+}
+
+$uri = implode("/", $uriSegments);
+
+$uri = rtrim($uri, '/');
+$routePrefix = ltrim($routePrefix, "/");
+
+define("ROUTE_PREFIX", $routePrefix);
+define("URI", $uri);
+
 $routePrams = [];
+
+require_once "helpers.php";
+
+$uri = strlen($uri) == 0 ? "" : "/".$uri;
 
 matchRoute($routes, $uri, $routePrams);
 
-function reigsterRoutes()
+function registerRoutes()
 {
     $route_groups = require_once "routes.php";
 

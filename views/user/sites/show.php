@@ -8,7 +8,7 @@ view("user.layout.header");
         <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                 <div class="flex flex-col p-8">
-                    <img class="mx-auto w-full flex-shrink-0 rounded" src="/<?php echo $site["SiteImage"] ?>" alt="">
+                    <img class="mx-auto w-full flex-shrink-0 rounded" src="<?php echo publicPath($site["SiteImage"]) ?>" alt="">
                     <h3 class="mt-6 text-lg font-medium text-gray-900"><?php echo $site["SiteName"] ?></h3>
                     <div class="mt-1 flex flex-grow flex-col justify-between">
                         <p class="text-sm text-gray-500">

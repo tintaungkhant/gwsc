@@ -12,7 +12,7 @@ view("user.layout.header");
                     <?php foreach ($top_sites as $top_site) : ?>
                         <div>
                             <a href="/sites/<?php echo $top_site["SiteID"] ?>" class="flex flex-col p-8 rounded hover:shadow hover:bg-gray-50 w-full">
-                                <img class="mx-auto w-full h-72 object-cover object-center flex-shrink-0 rounded" src="/<?php echo $top_site["SiteImage"] ?>" alt="">
+                                <img class="mx-auto w-full h-72 object-cover object-center flex-shrink-0 rounded" src="<?php echo publicPath($top_site["SiteImage"]) ?>" alt="">
                                 <h3 class="mt-6 text-lg text-center font-medium text-gray-900"><?php echo $top_site["SiteName"] ?></h3>
                             </a>
                         </div>
@@ -38,8 +38,8 @@ view("user.layout.header");
                 </div>
                 <div class="flex flex-wrap justify-between">
                     <?php foreach ($sites as $site) : ?>
-                        <a href="/sites/<?php echo $site["SiteID"] ?>" class="flex flex-col p-8 rounded hover:shadow hover:bg-gray-50 w-full md:w-1/2">
-                            <img class="mx-auto w-full h-48 object-cover flex-shrink-0 rounded" src="/<?php echo $site["SiteImage"] ?>" alt="">
+                        <a href="<?php echo route("sites/".$site["SiteID"]) ?>" class="flex flex-col p-8 rounded hover:shadow hover:bg-gray-50 w-full md:w-1/2">
+                            <img class="mx-auto w-full h-48 object-cover flex-shrink-0 rounded" src="<?php echo publicPath($site["SiteImage"]) ?>" alt="">
                             <h3 class="mt-6 text-sm font-medium text-gray-900"><?php echo $site["SiteName"] ?></h3>
                             <div class="flex items-center">
                                 <i class="fa-solid fa-eye text-sm text-gray-500 mr-1"></i><span class="text-sm"><?php echo $site["SiteViewCount"] ?></span>

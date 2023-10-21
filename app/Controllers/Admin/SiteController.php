@@ -54,6 +54,8 @@ class SiteController
 
         move_uploaded_file($data["SiteImage"]["tmp_name"], $upload_file_path);
 
+        $upload_file_path = str_replace("public/", "", $upload_file_path);
+
         $data["SiteImage"] = $upload_file_path;
 
         $feature_ids = $data["FeatureIDs"];
@@ -141,6 +143,8 @@ class SiteController
             $upload_file_path = uploadFilePath(getFileExt($data["SiteImage"]["name"]));
 
             move_uploaded_file($data["SiteImage"]["tmp_name"], $upload_file_path);
+
+            $upload_file_path = str_replace("public/", "", $upload_file_path);
     
             $data["SiteImage"] = $upload_file_path;
         }else{
