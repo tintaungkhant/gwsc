@@ -1,8 +1,17 @@
-## HOW TO RUN
+## How to run?
 
-Please run this command inside my project root.
+**Method 1**
 
-    php -S localhost:8000
+1. Please create a folder under **xampp/htdocs**
 
-Then please go to this URL and you can start using my app.
-[http://localhost:8000](http://localhost:8000)
+2. Copy all my project files to newly created folder.
+
+3. Now you can call **http://localhost/{new_folder_name}**.
+
+**Method 2**
+
+1. Please go to my project folder and open terminal.
+
+2. Run `php -S localhost:8000` or `php -S localhost:{your_available_port}`
+
+3. Now you can call **http://localhost:8000** or **http://localhost:{your_available_port}**.
